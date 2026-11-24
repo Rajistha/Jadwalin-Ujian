@@ -16,6 +16,7 @@ import SummaryCards from "@/components/SummaryCards";
 import ScheduleTable from "@/components/ScheduleTable";
 import Logo, { LogoIcon } from "@/components/Logo";
 import type { SearchResult, AppState } from "@/lib/types";
+import { extractCoursesFromImage } from "@/lib/ocr";
 import { GraduationCap, ShieldAlert, RotateCcw, BookOpen, Lightbulb, CheckCircle2, Info, CalendarX, ExternalLink, Database } from "lucide-react";
 
 export default function HomePage() {
@@ -92,19 +93,8 @@ export default function HomePage() {
     }, 1600);
 
     try {
-      const formData = new FormData();
-      formData.append("image", file);
-
-      const extractRes = await fetch("/api/extract", { method: "POST", body: formData });
-
-      if (extractRes.status === 429) {
-        setErrorMsg("Terlalu banyak permintaan. Coba lagi dalam 15 menit.");
-        setState("error");
-        return;
-      }
-      if (!extractRes.ok) throw new Error("EXTRACT_FAILED");
-
-      const extractData = await extractRes.json();
+      // OCR runs in the browser (no AI service / API key)
+      const extractData = await extractCoursesFromImage(file);
       clearTimeout(readTimer);
       await goStep(1);
       await goStep(2);
