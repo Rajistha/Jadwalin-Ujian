@@ -68,12 +68,14 @@ export default function UploadDropzone({
 
   if (selectedFile && previewUrl) {
     return (
-      <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-50 group">
+      // flex-1 + absolute image: the preview fills whatever height the card has (no empty gap above
+      // the search button when the guide card next to it is taller).
+      <div className="relative flex-1 min-h-60 sm:min-h-72 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 group">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={previewUrl}
           alt="Preview KRS"
-          className="w-full object-contain max-h-72 bg-slate-100"
+          className="absolute inset-0 w-full h-full object-contain"
         />
 
         {/* Hover / Overlay controls */}
@@ -145,7 +147,7 @@ export default function UploadDropzone({
       onDrop={handleDrop}
       onClick={() => !disabled && inputRef.current?.click()}
       className={cn(
-        "relative cursor-pointer rounded-xl border-2 border-dashed transition-all p-8 flex flex-col items-center justify-center gap-3.5 select-none min-h-[210px] group",
+        "relative flex-1 cursor-pointer rounded-xl border-2 border-dashed transition-all p-8 flex flex-col items-center justify-center gap-3.5 select-none min-h-[210px] group",
         dragOver
           ? "border-blue-500 bg-blue-50/60 shadow-sm"
           : error

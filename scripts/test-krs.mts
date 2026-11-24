@@ -100,6 +100,51 @@ Pengantar Sistem Informasi CS!6100Z Sistem Informasi B 3.00 Disetujui`);
   else fail(`dapat ${JSON.stringify(got)}, harusnya ${JSON.stringify(want)}`);
 }
 
+// Full-screen screenshot: SIAM's side menu text lands in front of the row, and small fonts turn 6 into "e".
+console.log("\n# Screenshot layar penuh (menu samping + angka 6 jadi e)");
+{
+  const ocr = `NAMA MK KODE MK PROGRAM STUDI KELAS SKS STATUS ACTIONS
+KRS Kriptografi CIT60045 Teknologi Informasi A 3.00 Disetujui Peserta Brone
+KHS Tata kelola dan Kebijakan Keamanan Siber CIT60047 Teknologi Informasi A 2.00 Disetujui Peserta
+Jadwal Kuliah Information Retrieval CITe0048 Teknologi Informasi A 2.00 Disetujui Peserta
+Jadwal Ujian Teknologi Basis Data Non Relational CIT60049 Teknologi Informasi A 3.00 Disetujui
+Rekap Kehadiran Pengembangan Aplikasi Web CIT61006 Teknologi Informasi B 4.00 Disetujui
+Presensi Kuliah Teknologi Keamanan Siber CIT61024 Teknologi Informasi C 3.00 Disetujui
+Tugas Akhir Internet of Things CIT61026 Teknologi Informasi D 4.00 Disetujui
+Rekap Kehadiran Metodologi Penelitian dan Penulisan Ilmiah COM60051 Teknologi Informasi B 3.00 Disetujui
+TOTAL SKS 24`;
+  const p = parseKrsText(ocr);
+  const bad = p.courses.filter((c) => !c.code).map((c) => c.name);
+  if (bad.length) fail(`kode tidak terbaca: ${bad.join(", ")}`);
+  if (p.issues.length) fail(`peringatan palsu: ${JSON.stringify(p.issues)}`);
+  const res = await fetch(`${BASE}/api/match`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ courses: p.courses, study_program: p.detected_study_program }),
+  });
+  const data = await res.json();
+  const want: [string, string][] = [
+    ["Kriptografi", "A"], ["Tata kelola dan Kebijakan Keamanan Siber", "A"], ["Information Retrieval", "A"],
+    ["Teknologi Basis Data Non Relational", "A"], ["Pengembangan Aplikasi Web", "B"], ["Teknologi Keamanan Siber", "C"],
+    ["Internet of Things", "D"], ["Metodologi Penelitian dan Penulisan Ilmiah", "B"],
+  ];
+  if (data.unmatched.length) fail(`unmatched: ${data.unmatched.map((u: { name: string }) => u.name).join(" | ")}`);
+  for (const [n, c] of want) {
+    const got = data.matched.find((m: { course?: { name: string }; class_name: string }) => m.course?.name === n && m.class_name === c);
+    if (got) console.log(`  ok   ${n} kelas ${c}`);
+    else fail(`${n} kelas ${c} tidak ketemu`);
+  }
+  // A longer real course name must not be cut down to a shorter one.
+  const lanjut = await (await fetch(`${BASE}/api/match`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ study_program: "Teknologi Informasi", courses: [{ code: "", name: "Pengembangan Aplikasi Web Lanjut", class: "A", confidence: 0.9 }] }),
+  })).json();
+  const got = lanjut.matched[0]?.course?.name;
+  if (got === "Pengembangan Aplikasi Web Lanjut") console.log("  ok   nama panjang tidak dipotong: " + got);
+  else fail(`Pengembangan Aplikasi Web Lanjut -> ${got}`);
+}
+
 // Column warnings: none for a clean KRS, the right one for each kind of damage.
 console.log("\n# Peringatan kolom");
 {
@@ -115,10 +160,14 @@ Information Retrieval CIT60048 Teknologi Informasi 2.00 Disetujui`, "KELAS"],
     ["baris tabel tidak terbaca", light.replace(/^Kriptografi.*$/m, "Kr!pt0 ### ~~ Disetujui"), "BARIS"],
     ["kolom PROGRAM STUDI tidak terbaca", `Kriptografi CIT60045 A 3.00 Disetujui
 Information Retrieval CIT60048 A 2.00 Disetujui`, "PROGRAM STUDI"],
-    ["kode tidak terbaca di satu baris", light.replace("CIT60047", "CITe0047"), "KODE MK"],
+    ["kode di satu baris rusak total (tetap cocok lewat nama, tanpa peringatan)", light.replace("CIT60047", "C?T6@047"), ""],
+    ["seluruh kolom KODE MK hilang", `Kriptografi Teknologi Informasi A 3.00 Disetujui
+Information Retrieval Teknologi Informasi A 2.00 Disetujui`, "KODE MK"],
     ["matkul belum disetujui", light.replace(/(Kriptografi.*)Disetujui/, "$1Ditolak").replace("TOTAL SKS 24", "TOTAL SKS 21"), "STATUS"],
-    ["kolom STATUS tidak terbaca", `Kriptografi CIT60045 Teknologi Informasi A 3.00
-Information Retrieval CIT60048 Teknologi Informasi A 2.00`, "STATUS"],
+    // STATUS and SKS are optional: a screenshot without them must not warn, and classes must still be read.
+    ["tanpa kolom SKS & STATUS", `NAMA MK KODE MK PROGRAM STUDI KELAS
+Kriptografi CIT60045 Teknologi Informasi A
+Information Retrieval CIT60048 Teknologi Informasi C`, ""],
   ];
   for (const [label, text, want] of checks) {
     const got = cols(text);
@@ -159,6 +208,11 @@ console.log("\n# Semua nama matkul S1 di jadwal");
     "1 huruf hilang": { name: (s) => (s.length > 8 ? s.slice(0, 5) + s.slice(6) : s), code: (k) => `ZZZ${90000 + k}` },
     // CSD60700..CSD60739: distinct per row, many one digit away from the known CSD60703
     "kode tetangga kode lain": { name: (s) => s, code: (k) => `CSD60${700 + k}` },
+    // Side menu of a full-screen SIAM screenshot in front of the name
+    "menu samping": {
+      name: (s) => `${["Presensi Kuliah", "Rekap Kehadiran", "Jadwal Ujian", "KRS", "Rekap Hasil Studi"][s.length % 5]} ${s}`,
+      code: (k) => `ZZZ${90000 + k}`,
+    },
   };
   const byProg = new Map<string, string[][]>();
   for (const r of rows) {

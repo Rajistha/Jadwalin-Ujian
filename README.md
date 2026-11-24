@@ -74,6 +74,7 @@ Kode mata kuliah tidak ada di CSV. Kode yang terbukti dari KRS asli dicatat di `
 - Hanya mendukung FILKOM.
 - Jadwal Magister/S3 yang tanggalnya belum pasti di sumber data (`#N/A`, "Sabtu,...") belum dimasukkan.
 - Hasil pembacaan gambar bergantung pada kualitas screenshot. Pastikan kolom kode MK, nama MK, dan kelas terbaca jelas.
+- Gunakan screenshot dari tampilan desktop, hanya bagian tabel KRS (dari judul kolom sampai Total SKS). Tampilan HP dan foto kamera tidak didukung.
 - Jadwal di aplikasi ini bukan sumber resmi. Selalu cek ulang di SIAM UB atau pengumuman fakultas.
 
 ## Build

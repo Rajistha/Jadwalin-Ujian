@@ -79,8 +79,35 @@ export async function POST(req: NextRequest) {
       return near.length === 1 ? near[0] : code; // only fix when unambiguous
     };
 
+    // Full-screen screenshots put SIAM's side menu on the same OCR line as a table row, so a name
+    // can arrive as "Presensi Kuliah Teknologi Keamanan Siber". The menu is left of the table, so its
+    // text is always IN FRONT of the name. Only labels we know are removed: guessing "anything before
+    // a known course name is noise" would silently turn a real, unscheduled course such as
+    // "Penerapan X" into the scheduled "X".
+    const MENU_LABELS = [
+      "Rekap Hasil Studi", "Rekap Kehadiran", "Presensi Kuliah", "Jadwal Kuliah", "Jadwal Ujian",
+      "Tugas Akhir", "SIAM Mahasiswa", "SIAM Menu", "Akademik", "Dashboard", "Biodata", "e-KTM",
+      "SKPI", "KRS", "KHS",
+    ].map((l) => normalizeCourseName(l).split(" "));
+    const stripMenuPrefix = (name: string) => {
+      const words = name.split(/\s+/);
+      const norm = words.map((w) => normalizeCourseName(w));
+      let i = 0;
+      for (let progress = true; progress; ) {
+        progress = false;
+        for (const label of MENU_LABELS) {
+          if (label.every((w, k) => norm[i + k] === w)) {
+            i += label.length;
+            progress = true;
+            break;
+          }
+        }
+      }
+      return i > 0 && i < words.length ? words.slice(i).join(" ") : name;
+    };
+
     for (const [idx, raw] of detected.entries()) {
-      const det = { ...raw, code: fixCode(raw.code) ?? raw.code };
+      const det = { ...raw, name: stripMenuPrefix(raw.name), code: fixCode(raw.code) ?? raw.code };
       const courseProg = det.study_program || activeProgram;
       const normalized = normalizeCourseName(det.name);
       const fuseResults = getFuse(courseProg).search(normalized);
@@ -107,6 +134,7 @@ export async function POST(req: NextRequest) {
           detected_name: det.name,
           detected_class: det.class,
           detected_study_program: courseProg,
+          detected_credits: det.credits ?? null,
           match_method: "exact",
           match_score: 1,
           conflict: false,
@@ -134,6 +162,7 @@ export async function POST(req: NextRequest) {
             detected_name: det.name,
             detected_class: det.class,
             detected_study_program: courseProg,
+            detected_credits: det.credits ?? null,
             match_method: "fuzzy",
             match_score: 1 - (fuseResults[0].score || 0),
             conflict: false,

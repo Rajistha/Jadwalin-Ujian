@@ -6,7 +6,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
-import { resolveCredits } from "@/lib/utils";
+import { resolveCredits, cn } from "@/lib/utils";
 
 import UploadDropzone from "@/components/UploadDropzone";
 import SearchButton from "@/components/SearchButton";
@@ -16,7 +16,9 @@ import ScheduleTable from "@/components/ScheduleTable";
 import Logo, { LogoIcon } from "@/components/Logo";
 import type { SearchResult, AppState, DetectedCourse, KrsIssue } from "@/lib/types";
 import { extractCoursesFromImage, DEFAULT_PROGRAM } from "@/lib/ocr";
-import { GraduationCap, ShieldAlert, RotateCcw, BookOpen, Lightbulb, CheckCircle2, Info, CalendarX, ExternalLink, Database } from "lucide-react";
+import { GraduationCap, ShieldAlert, RotateCcw, BookOpen, Lightbulb, CheckCircle2, Info, CalendarX, ExternalLink, Database, Loader2 } from "lucide-react";
+
+const DATA_STUDIO_URL = "https://datastudio.google.com/u/0/reporting/debeed27-617d-4375-89dc-2c4e98c6bfe6/page/VTeJC";
 
 export default function HomePage() {
   const [file, setFile] = useState<File | null>(null);
@@ -26,6 +28,7 @@ export default function HomePage() {
   const [selectedProgram, setSelectedProgram] = useState<string>("Teknologi Informasi");
   const [extractedCourses, setExtractedCourses] = useState<DetectedCourse[]>([]);
   const [rematching, setRematching] = useState(false);
+  const [choosing, setChoosing] = useState<string | null>(null); // "<course key>:<class>" being applied
   const [issues, setIssues] = useState<KrsIssue[]>([]);
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loadingStep, setLoadingStep] = useState(0);
@@ -157,6 +160,7 @@ export default function HomePage() {
         alert("Gagal memperbarui kelas. Coba lagi.");
       } finally {
         setRematching(false);
+        setChoosing(null);
       }
     },
     [extractedCourses, selectedProgram, rematching]
@@ -302,7 +306,7 @@ export default function HomePage() {
           </div>
           <div className="flex items-center gap-3">
             <a
-              href="https://datastudio.google.com/u/0/reporting/debeed27-617d-4375-89dc-2c4e98c6bfe6/page/VTeJC"
+              href={DATA_STUDIO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-slate-700 font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition shadow-2xs"
@@ -330,7 +334,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {/* Upload Dropzone Container */}
           <div style={{ animationDelay: "200ms" }} className="fade-slide-up lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-xs p-5 sm:p-6 flex flex-col justify-between gap-4">
-            <div>
+            <div className="flex-1 flex flex-col">
               <div className="flex items-center justify-between mb-3.5">
                 <h2 className="text-sm font-bold text-slate-900">Unggah Screenshot KRS</h2>
                 <span className="text-[11px] font-medium text-slate-400">JPG, PNG, WebP</span>
@@ -355,13 +359,13 @@ export default function HomePage() {
                 {[
                   {
                     step: "1",
-                    title: "Screenshot Tabel KRS",
-                    desc: "Buka menu KRS di SIAM UB, lalu ambil screenshot tabel yang memuat Kode MK, Nama MK, Kelas, dan Prodi.",
+                    title: "Screenshot Tabel KRS dari Desktop",
+                    desc: "Buka menu KRS di SIAM UB lewat laptop atau komputer (tampilan desktop, bukan tampilan HP). Screenshot hanya bagian tabelnya, mulai dari baris judul kolom (Nama MK, Kode MK, Program Studi, Kelas, SKS, Status) sampai baris Total SKS.",
                   },
                   {
                     step: "2",
                     title: "Unggah atau Paste",
-                    desc: "Tarik berkas gambar ke area unggah, atau tekan Ctrl+V langsung dari clipboard.",
+                    desc: "Tarik berkas gambar ke area unggah, pilih dari perangkat, atau tekan Ctrl+V untuk menempel langsung dari clipboard. Setelah gambar tampil, klik Cari Jadwal UAS.",
                   },
                   {
                     step: "3",
@@ -385,10 +389,12 @@ export default function HomePage() {
                 <Lightbulb className="w-3.5 h-3.5 text-amber-600" />
                 <p className="text-xs font-semibold text-slate-800">Tips</p>
               </div>
-              <ul className="text-[11px] text-slate-500 space-y-0.5 list-disc list-inside leading-relaxed">
-                <li>Kolom Kode MK, Nama MK, Kelas, dan Prodi harus terbaca jelas</li>
-                <li>Pakai screenshot dari layar, bukan foto kamera</li>
-                <li>Tidak perlu memotong bagian header tabel</li>
+              <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc pl-4 marker:text-slate-300 leading-relaxed">
+                <li>Wajib screenshot dari tampilan desktop. Di tampilan HP, tabel KRS berubah bentuk sehingga kolomnya tidak bisa dibaca.</li>
+                <li>Cukup tabelnya saja. Jangan ikutkan menu samping SIAM, bilah alamat browser, atau bagian halaman lain, karena tulisannya bisa tercampur dengan nama mata kuliah.</li>
+                <li>Sertakan baris judul kolom dan pastikan semua kolom terlihat utuh sampai Status. Kolom yang terpotong tidak bisa dibaca.</li>
+                <li>Kode MK, Nama MK, Kelas, dan Prodi harus terbaca jelas. Jangan di-zoom out sampai tulisannya mengecil.</li>
+                <li>Pakai screenshot dari layar, bukan foto kamera, dan bukan gambar yang sudah dikirim ulang lewat chat karena kualitasnya turun.</li>
               </ul>
             </div>
           </div>
@@ -451,44 +457,84 @@ export default function HomePage() {
 
             {/* Partial Warning */}
             {state === "partial" && result.unmatched.length > 0 && (
-              <div className="bg-amber-50 border border-amber-200 text-amber-900 rounded-lg p-3.5 text-xs font-medium flex items-start gap-2.5">
-                <Info className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                <div className="flex-1 min-w-0">
-                  <p>
-                    <span className="font-bold">Belum ketemu: </span>
-                    {result.unmatched.length} mata kuliah tidak cocok dengan jadwal UAS. Kelasnya tidak terbaca atau tidak ada di jadwal. Pilih kelas yang sesuai KRS-mu:
-                  </p>
-                  <ul className="mt-2 flex flex-col gap-1.5">
-                    {result.unmatched.map((u) => (
-                      <li key={u.index ?? `${u.code}-${u.name}-${u.class}`} className="flex flex-wrap items-center gap-2">
-                        <span className="font-semibold">{u.name || u.code}</span>
-                        <span className="text-amber-700">
-                          {u.class ? `(terbaca kelas ${u.class})` : "(kelas tidak terbaca)"}
-                        </span>
-                        {u.available_classes && u.available_classes.length > 0 ? (
-                          <select
-                            aria-label={`Pilih kelas untuk ${u.name || u.code}`}
-                            value=""
-                            disabled={rematching}
-                            onChange={(e) => handleChooseClass(u, e.target.value)}
-                            className="rounded-md border border-amber-300 bg-white px-2 py-1 text-xs font-semibold text-amber-900"
-                          >
-                            <option value="" disabled>
-                              Pilih kelas
-                            </option>
-                            {u.available_classes.map((c) => (
-                              <option key={c} value={c}>
-                                Kelas {c}
-                              </option>
-                            ))}
-                          </select>
+              <div className="bg-amber-50/70 border border-amber-200 rounded-xl p-4 flex flex-col gap-3">
+                <div className="flex items-start gap-2.5">
+                  <div className="w-7 h-7 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
+                    <Info className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-amber-950">
+                      {result.unmatched.length} mata kuliah belum ketemu
+                    </p>
+                    <p className="text-xs text-amber-800 mt-0.5 leading-relaxed">
+                      Kelasnya tidak terbaca atau tidak ada di data jadwal. Pilih kelas sesuai KRS-mu, atau cek status jadwalnya di Data Studio.
+                    </p>
+                  </div>
+                </div>
+
+                <ul className="flex flex-col gap-2">
+                  {result.unmatched.map((u) => {
+                    const key = u.index ?? `${u.code}-${u.name}-${u.class}`;
+                    const hasChoices = !!u.available_classes && u.available_classes.length > 0;
+                    return (
+                      <li
+                        key={key}
+                        className="bg-white border border-amber-100 rounded-lg px-3.5 py-3 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between shadow-xs"
+                      >
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-slate-900 truncate" title={u.name || u.code}>
+                            {u.name || u.code}
+                          </p>
+                          <p className="text-[11px] text-slate-500 mt-0.5">
+                            {u.code && <span className="font-mono">{u.code} · </span>}
+                            {u.class ? `terbaca kelas ${u.class}, tidak ada di jadwal` : "kelas tidak terbaca"}
+                          </p>
+                        </div>
+
+                        {hasChoices ? (
+                          <div role="group" aria-label={`Pilih kelas untuk ${u.name || u.code}`} className="flex flex-wrap gap-1.5 sm:justify-end">
+                            {u.available_classes!.map((c) => {
+                              const isPending = choosing === `${key}:${c}`;
+                              return (
+                                <button
+                                  key={c}
+                                  type="button"
+                                  disabled={rematching}
+                                  onClick={() => {
+                                    setChoosing(`${key}:${c}`);
+                                    handleChooseClass(u, c);
+                                  }}
+                                  className={cn(
+                                    "min-w-[2.75rem] h-8 px-3 rounded-full border text-xs font-semibold transition-all inline-flex items-center justify-center gap-1",
+                                    isPending
+                                      ? "bg-blue-600 border-blue-600 text-white"
+                                      : "bg-white border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 active:scale-95",
+                                    rematching && !isPending && "opacity-50 cursor-not-allowed",
+                                    !rematching && "cursor-pointer"
+                                  )}
+                                  aria-label={`Kelas ${c}`}
+                                >
+                                  {isPending && <Loader2 className="w-3 h-3 animate-spin" />}
+                                  {c}
+                                </button>
+                              );
+                            })}
+                          </div>
                         ) : (
-                          <span className="text-amber-700">tidak ada di jadwal UAS prodi ini, cek ke bagian akademik</span>
+                          <a
+                            href={DATA_STUDIO_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[11px] font-medium text-amber-800 bg-amber-100/70 hover:bg-amber-100 rounded-full px-2.5 py-1 self-start sm:self-center inline-flex items-center gap-1 transition"
+                          >
+                            Tidak ada di data jadwal. Cek status di Data Studio
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
                         )}
                       </li>
-                    ))}
-                  </ul>
-                </div>
+                    );
+                  })}
+                </ul>
               </div>
             )}
 
@@ -499,7 +545,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 text-sm">Mata Kuliah Tidak Ditemukan</h3>
-                  <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto leading-relaxed">Mata kuliah di KRS tidak ada di jadwal UAS. Pastikan screenshot terbaca jelas, atau tanyakan ke bagian akademik.</p>
+                  <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto leading-relaxed">Mata kuliah di KRS tidak ada di jadwal UAS. Pastikan screenshot terbaca jelas, atau cek langsung di Data Studio.</p>
                 </div>
               </div>
             ) : (

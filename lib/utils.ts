@@ -13,7 +13,13 @@ const KNOWN_CREDITS: Record<string, number> = {
   CIT61024: 3, COM60051: 3, CIT60047: 2, CIT60048: 2,
 };
 
-export function resolveCredits(s: { course?: { code?: string; credits?: number } | null; detected_code?: string }): number {
+export function resolveCredits(s: {
+  course?: { code?: string; credits?: number } | null;
+  detected_code?: string;
+  detected_credits?: number | null;
+}): number {
+  // Prefer the SKS read from the student's own KRS; fall back to known values, then 3.
+  if (s.detected_credits && s.detected_credits > 0 && s.detected_credits <= 8) return s.detected_credits;
   const code = (s.course?.code || s.detected_code || "").toUpperCase();
   return s.course?.credits || KNOWN_CREDITS[code] || 3;
 }

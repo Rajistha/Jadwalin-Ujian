@@ -3,8 +3,11 @@ import type { DetectedCourse, KrsIssue } from "./types";
 // Prodi assumed when the PROGRAM STUDI column can't be read.
 export const DEFAULT_PROGRAM = "Teknologi Informasi";
 
-// Column headers of the SIAM UB KRS table.
+// Column headers of the SIAM UB KRS table (used to recognise the header row).
 const HEADER_COLUMNS = ["NAMA MK", "KODE MK", "PROGRAM STUDI", "KELAS", "SKS", "STATUS"] as const;
+// Columns the schedule lookup actually needs. SKS and STATUS are optional: STATUS only skips
+// courses that are not approved yet, SKS only powers the "TOTAL SKS" sanity check.
+const REQUIRED_COLUMNS = ["NAMA MK", "KODE MK", "PROGRAM STUDI", "KELAS"] as const;
 
 const PROGRAMS = [
   "Pendidikan Teknologi Informasi",
@@ -18,12 +21,14 @@ const PROGRAMS = [
 
 // Fix common OCR confusions: letters part of the code should be letters, number part digits.
 const toLetter = (c: string) => ({ "0": "O", "1": "I", "5": "S", "8": "B" } as Record<string, string>)[c] ?? c;
-const toDigit = (c: string) => ({ O: "0", o: "0", I: "1", l: "1", "!": "1", "|": "1", S: "5", B: "8", G: "6" } as Record<string, string>)[c] ?? c;
+const toDigit = (c: string) =>
+  ({ O: "0", o: "0", I: "1", l: "1", "!": "1", "|": "1", S: "5", B: "8", G: "6", e: "6", Z: "2", z: "2", g: "9", q: "9" } as Record<string, string>)[c] ?? c;
 
 // Digits part may contain look-alike chars; trailing "!" is a common misread "1".
 // An optional stray letter between prefix and digits ("COMB60051") is dropped.
 // Ambiguous ones (e.g. B for 6 or 8) are corrected against known codes in /api/match.
-const CODE_RE = /\b([A-Z0-9]{3})[A-Z]?([0-9OoIlSBG!]{5})(?=\s|$)/;
+// "e" is how small fonts often render a 6 ("CITe0048" = CIT60048).
+const CODE_RE = /\b([A-Z0-9]{3})[A-Z]?([0-9OoIlSBGeZzgq!]{5})(?=\s|$)/;
 
 // Fallback when the code is unreadable: "<name> <garbled code> <prodi> <class> <SKS x.00> ..."
 // - greedy name so it anchors on the LAST prodi (course names can contain a prodi name,
@@ -31,10 +36,12 @@ const CODE_RE = /\b([A-Z0-9]{3})[A-Z]?([0-9OoIlSBG!]{5})(?=\s|$)/;
 // - the garbled token must still look like a code (5-12 alphanumerics with at least 3 digits)
 // - a class + SKS must follow the prodi, so biodata lines ("Program Studi: ... IPK 3.75") are ignored
 const PROGRAM_ALT = PROGRAMS.map((p) => p.replace(/\s+/g, "\\s+")).join("|");
-const ROW_RE = new RegExp(
-  `^(.+)\\s+((?=(?:[^\\s\\d]*\\d){3})[A-Za-z0-9!]{5,12})\\s+(${PROGRAM_ALT})(\\s+\\S{1,3}\\s+\\d[.,]\\d{2}\\b.*)$`,
-  "i"
-);
+// A class cell: A..Z (doubled by OCR sometimes), INT, or N1A style. Not any 3-letter word ("IPK").
+const CLASS_CELL = "(?:INT|N\\d[A-Za-z0-9]|[A-Za-z]{1,2})";
+const AFTER_PROGRAM = `(\\s+${CLASS_CELL}\\s+\\d[.,]?\\d{2}\\b.*)$`;
+const ROW_RE = new RegExp(`^(.+)\\s+((?=(?:\\D*\\d){3})\\S{5,12})\\s+(${PROGRAM_ALT})${AFTER_PROGRAM}`, "i");
+// Whole KODE MK column missing (cut off in the screenshot): "<name> <prodi> <class> <SKS>"
+const ROW_NO_CODE_RE = new RegExp(`^(.+)\\s+(${PROGRAM_ALT})${AFTER_PROGRAM}`, "i");
 
 // Class names in the schedule: A..H, INT, and multi-char like N1A / N7W.
 const CLASS_TOKEN = "(?:INT|N\\d[A-Z0-9]|[A-Z])";
@@ -104,13 +111,14 @@ export function parseKrsText(text: string): {
     } else {
       // Code unreadable: still keep the row, it will be matched by name + class + prodi.
       const r = ROW_RE.exec(line);
-      if (!r) {
+      const n = r ? null : ROW_NO_CODE_RE.exec(line);
+      if (!r && !n) {
         // A table row ("Disetujui") we couldn't read: name wrapped to another line, blur, ...
         if (approved) lostRows++;
         continue;
       }
-      before = r[1].trim();
-      after = `${r[3]}${r[4]}`.trim();
+      before = (r ? r[1] : n![1]).trim();
+      after = (r ? `${r[3]}${r[4]}` : `${n![2]}${n![3]}`).trim();
     }
 
     const program = PROGRAMS.find((p) => after.toLowerCase().includes(p.toLowerCase()));
@@ -127,9 +135,11 @@ export function parseKrsText(text: string): {
 
     if (program) programCount.set(program, (programCount.get(program) ?? 0) + 1);
     if (approved) hasStatus = true;
-    const sks = /(?:^|\s)(\d{1,2})[.,](\d{2})(?:\s|$)/.exec(after);
-    sksByCourse.push(sks ? Number(`${sks[1]}.${sks[2]}`) : null);
-    courses.push({ code, name, class: cls, study_program: program, confidence: program ? 0.9 : 0.7 });
+    // SKS "3.00"; OCR sometimes drops the dot ("200" = 2.00)
+    const sks = /(?:^|\s)(\d)[.,]?(\d{2})(?:\s|$)/.exec(after);
+    const credits = sks ? Number(`${sks[1]}.${sks[2]}`) : null;
+    sksByCourse.push(credits);
+    courses.push({ code, name, class: cls, study_program: program, confidence: program ? 0.9 : 0.7, credits });
   }
 
   const detected = [...programCount.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
@@ -153,7 +163,7 @@ function collectIssues(s: {
 
   // Header row read, but some columns are not in it: most likely cut off in the screenshot.
   if (s.headerLine) {
-    for (const col of HEADER_COLUMNS) {
+    for (const col of REQUIRED_COLUMNS) {
       if (!s.headerLine.includes(col.replace(/\s+/g, ""))) {
         issues.push({ column: col, message: `Kolom ${col} tidak terlihat di screenshot. Pastikan seluruh tabel KRS ikut ter-screenshot.` });
       }
@@ -175,11 +185,10 @@ function collectIssues(s: {
     add("KELAS", "Kolom KELAS tidak terbaca sama sekali. Pastikan kolom KELAS ikut ter-screenshot dan tidak buram.");
   }
 
-  const noCode = courses.filter((c) => !c.code);
-  if (noCode.length === courses.length) {
+  // A code missing in a few rows is harmless (matching works by name + class + prodi), so only
+  // warn when the whole column is gone.
+  if (courses.every((c) => !c.code)) {
     add("KODE MK", "Kolom KODE MK tidak terbaca. Mata kuliah dicocokkan lewat nama, cek ulang hasilnya.");
-  } else if (noCode.length > 0) {
-    add("KODE MK", `Kode MK tidak terbaca untuk: ${list(noCode)}. Dicocokkan lewat nama, cek ulang hasilnya.`);
   }
 
   const noProg = courses.filter((c) => !c.study_program);
@@ -189,9 +198,7 @@ function collectIssues(s: {
     add("PROGRAM STUDI", `Program studi tidak terbaca untuk: ${list(noProg)}. Dianggap sama dengan prodi mata kuliah lain.`);
   }
 
-  if (s.sksByCourse.every((x) => x === null)) {
-    add("SKS", "Kolom SKS tidak terbaca.");
-  } else if (s.totalSks !== null && s.sksByCourse.every((x) => x !== null)) {
+  if (s.totalSks !== null && s.sksByCourse.every((x) => x !== null)) {
     const sum = s.sksByCourse.reduce<number>((a, x) => a + (x ?? 0), 0);
     if (Math.abs(sum - s.totalSks) > 0.001) {
       add(
@@ -201,9 +208,6 @@ function collectIssues(s: {
     }
   }
 
-  if (!s.hasStatus && s.notApproved === 0) {
-    add("STATUS", "Kolom STATUS tidak terbaca. Pastikan KRS-mu sudah disetujui.");
-  }
   if (s.notApproved > 0) {
     add("STATUS", `${s.notApproved} mata kuliah belum disetujui (Ditolak/Menunggu/Dibatalkan) dan tidak dicari jadwalnya.`);
   }

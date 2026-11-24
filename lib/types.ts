@@ -49,6 +49,8 @@ export interface DetectedCourse {
   available_classes?: string[];
   // Position of this course in the request, so the client can update the right entry.
   index?: number;
+  // SKS as read from the KRS (null/undefined when the SKS column wasn't readable).
+  credits?: number | null;
 }
 
 // A problem noticed while reading the KRS screenshot, shown to the user as a warning.
@@ -62,6 +64,7 @@ export interface MatchedSchedule extends ExamSchedule {
   detected_name: string;
   detected_class: string;
   detected_study_program?: string;
+  detected_credits?: number | null;
   match_method: "exact" | "fuzzy" | "manual" | "none";
   match_score: number;
   conflict?: boolean;
