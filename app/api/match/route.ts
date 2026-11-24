@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { getStore, seedSampleData } from "@/lib/store";
-import type { DetectedCourse, MatchedSchedule, SearchResult } from "@/lib/types";
+import type { Course, DetectedCourse, MatchedSchedule, SearchResult } from "@/lib/types";
 import { normalizeCourseName } from "@/lib/utils";
 import Fuse from "fuse.js";
 
@@ -46,29 +46,50 @@ export async function POST(req: NextRequest) {
       detected.find((d) => d.study_program)?.study_program ||
       "Teknologi Informasi";
 
-    // Build Fuse index for fuzzy matching
-    const fuse = new Fuse(courses, {
-      keys: ["name_normalized", "code", "study_program"],
-      threshold: 0.4,
-      includeScore: true,
-    });
+    // Fuzzy index per study program: a student must only be matched to schedules of their own prodi.
+    const sameProg = (a?: string | null, b?: string | null) =>
+      !!a && !!b && a.toLowerCase() === b.toLowerCase();
+    const fuseByProgram = new Map<string, Fuse<Course>>();
+    const getFuse = (prog: string) => {
+      const key = prog.toLowerCase();
+      let f = fuseByProgram.get(key);
+      if (!f) {
+        f = new Fuse(
+          courses.filter((c) => sameProg(c.study_program, prog)),
+          { keys: ["name_normalized"], threshold: 0.4, includeScore: true }
+        );
+        fuseByProgram.set(key, f);
+      }
+      return f;
+    };
 
     const matched: MatchedSchedule[] = [];
     const unmatched: DetectedCourse[] = [];
 
-    for (const det of detected) {
+    // Known codes, used to fix single-character OCR misreads (e.g. COM80052 -> COM60052).
+    const knownCodes = new Set(
+      schedules.map((s) => s.course?.code?.toUpperCase()).filter((c): c is string => !!c)
+    );
+    const fixCode = (code?: string) => {
+      const c = code?.toUpperCase();
+      if (!c || knownCodes.has(c)) return code;
+      const near = [...knownCodes].filter(
+        (k) => k.length === c.length && [...k].filter((ch, i) => ch !== c[i]).length === 1
+      );
+      return near.length === 1 ? near[0] : code; // only fix when unambiguous
+    };
+
+    for (const raw of detected) {
+      const det = { ...raw, code: fixCode(raw.code) ?? raw.code };
       const courseProg = det.study_program || activeProgram;
 
-      // 1. Exact match by code + class + study_program priority
-      const exactByCodeAndClass = schedules.filter(
+      // 1. Exact match by code + class + study program (no cross-prodi fallback)
+      const chosenExact = schedules.find(
         (s) =>
           s.course?.code?.toLowerCase() === det.code?.toLowerCase() &&
-          s.class_name?.toLowerCase() === det.class?.toLowerCase()
+          s.class_name?.toLowerCase() === det.class?.toLowerCase() &&
+          sameProg(s.course?.study_program, courseProg)
       );
-
-      let chosenExact = exactByCodeAndClass.find(
-        (s) => s.course?.study_program?.toLowerCase() === courseProg?.toLowerCase()
-      ) || exactByCodeAndClass[0];
 
       if (chosenExact) {
         matched.push({
@@ -86,9 +107,9 @@ export async function POST(req: NextRequest) {
 
       // No code-only fallback: if the class doesn't match, we don't guess another class.
 
-      // 2. Fuzzy match by name (same class only)
+      // 2. Fuzzy match by name (same prodi, same class only)
       const normalized = normalizeCourseName(det.name);
-      const fuseResults = fuse.search(normalized);
+      const fuseResults = getFuse(courseProg).search(normalized);
       if (fuseResults.length > 0 && fuseResults[0].score !== undefined && fuseResults[0].score < 0.4) {
         const matchedCourse = fuseResults[0].item;
         const schedForCourse = det.class

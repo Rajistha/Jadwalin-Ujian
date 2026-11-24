@@ -5,7 +5,19 @@ const csvPath = path.join(__dirname, '../lib/raw_jadwal.csv');
 const content = fs.readFileSync(csvPath, 'utf8');
 
 const lines = content.split('\n').map(l => l.trim()).filter(Boolean);
-const header = lines[0].split(',');
+
+// Split a CSV line, honouring "quoted, fields".
+function splitCsv(line) {
+  const out = [];
+  let cur = '', q = false;
+  for (const ch of line) {
+    if (ch === '"') q = !q;
+    else if (ch === ',' && !q) { out.push(cur); cur = ''; }
+    else cur += ch;
+  }
+  out.push(cur);
+  return out;
+}
 
 const MONTH_MAP = {
   Jan: '01', Feb: '02', Mar: '03', Apr: '04', Mei: '05', May: '05',
@@ -13,20 +25,10 @@ const MONTH_MAP = {
   Nov: '11', Des: '12', Dec: '12'
 };
 
-const DAY_MAP = {
-  '2026-11-30': 'Senin',
-  '2026-12-01': 'Selasa',
-  '2026-12-02': 'Rabu',
-  '2026-12-03': 'Kamis',
-  '2026-12-04': 'Jumat',
-  '2026-12-07': 'Senin',
-  '2026-12-08': 'Selasa',
-  '2026-12-09': 'Rabu',
-  '2026-12-10': 'Kamis',
-  '2026-12-11': 'Jumat',
-};
+const DAY_NAMES = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 
-// Known course codes for FILKOM
+// Course codes verified from real KRS screenshots (SIAM UB). The schedule CSV has no codes,
+// so everything else gets a placeholder code and is matched by name + class + prodi.
 const KNOWN_CODES = {
   'kriptografi': 'CIT60045',
   'tata kelola dan kebijakan keamanan siber': 'CIT60047',
@@ -36,26 +38,11 @@ const KNOWN_CODES = {
   'teknologi keamanan siber': 'CIT61024',
   'internet of things': 'CIT61026',
   'metodologi penelitian dan penulisan ilmiah': 'COM60051',
-  'administrasi basis data': 'CSI61001',
-  'pengantar sistem informasi': 'CSI61002',
-  'rekayasa sistem informasi': 'CSI61003',
-  'pemrograman dasar': 'CIF61001',
-  'basis data': 'CIF61002',
-  'jaringan komputer': 'CIF61003',
-  'rekayasa perangkat lunak': 'CIF61004',
-  'algoritma dan struktur data': 'CIF61007',
-  'matematika diskret': 'CIF61008',
-  'kalkulus': 'CIF61009',
-  'etika profesi': 'COM60001',
-  'bahasa inggris': 'UNG60001',
-  'bahasa indonesia': 'UNG60002',
-  'pancasila': 'UNG60003',
-  'kewarganegaraan': 'UNG60004',
-  'agama islam': 'UNG60005',
-  'agama katolik': 'UNG60006',
-  'agama protestan': 'UNG60007',
-  'agama hindu': 'UNG60008',
-  'agama budha': 'UNG60009',
+  'teknologi berbasis cloud': 'CIT60036',
+  'teknologi blockchain dan platform keuangan dijital': 'CIT60042',
+  'forensik dijital': 'CIT60055',
+  'etika profesi': 'COM60052',
+  'tata kelola teknologi informasi': 'CSD60703',
 };
 
 function normalizeName(str) {
@@ -66,21 +53,19 @@ const coursesMap = {};
 const schedules = [];
 
 let idCounter = 1;
+let skipped = 0;
 
 for (let i = 1; i < lines.length; i++) {
-  const parts = lines[i].split(',');
+  const parts = splitCsv(lines[i]);
   if (parts.length < 7) continue;
 
-  const [dateStr, timeStr, prodiRaw, courseName, className, countStr, room] = parts.map(p => p.trim());
+  const [dateStr, timeStr, prodiRaw, courseName, className, countStr, roomRaw] = parts.map(p => p.trim());
 
-  // Parse Date
-  // e.g. "30 Nov 2026"
-  const dParts = dateStr.split(' ');
-  const day = dParts[0].padStart(2, '0');
-  const month = MONTH_MAP[dParts[1]] || '11';
-  const year = dParts[2] || '2026';
-  const isoDate = `${year}-${month}-${day}`;
-  const dayName = DAY_MAP[isoDate] || 'Senin';
+  // Only ISO dates (YYYY-MM-DD) are reliable; skip "#N/A" and ambiguous "Sabtu,4 Desember" rows.
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) { skipped++; continue; }
+  const isoDate = dateStr;
+  const dayName = DAY_NAMES[new Date(isoDate + 'T00:00:00Z').getUTCDay()];
+  const room = roomRaw === 'null' ? '-' : roomRaw;
 
   // Parse Time
   // e.g. "07:30-09:30"
@@ -123,7 +108,7 @@ for (let i = 1; i < lines.length; i++) {
 
 const coursesList = Object.values(coursesMap);
 
-console.log(`Parsed ${coursesList.length} courses and ${schedules.length} schedules.`);
+console.log(`Parsed ${coursesList.length} courses and ${schedules.length} schedules (skipped ${skipped} without ISO date).`);
 
 const outputCode = `// Generated real schedules from Looker Studio
 import type { Course, ExamSchedule, ExamPeriod } from "./types";
