@@ -40,7 +40,7 @@ Buka http://localhost:3000.
 | Variabel | Fungsi |
 |---|---|
 | `GEMINI_API_KEY` | Kunci API untuk membaca screenshot KRS |
-| `GEMINI_MODEL` | Model Gemini yang dipakai (opsional, bawaan gemini-2.5-flash) |
+| `GEMINI_MODEL` | Model Gemini yang dipakai (opsional, bawaan gemini-3.8-flash) |
 | `APP_URL` | URL publik situs, dipakai untuk metadata dan OG image |
 
 Tanpa `GEMINI_API_KEY`, endpoint ekstraksi tidak bisa membaca gambar.
