@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://jadwalinujian.com"),
+  metadataBase: new URL(process.env.APP_URL || "https://jadwalin-ujian.rajistha.my.id"),
   title: "JadwalinUjian – Upload KRS, Jadwal Ujian Langsung Ketemu",
   description: "Cari jadwal UAS FILKOM Universitas Brawijaya dari screenshot KRS. Hasilnya bisa diunduh sebagai PNG atau PDF.",
   icons: {

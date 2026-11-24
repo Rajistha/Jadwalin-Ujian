@@ -439,7 +439,7 @@ const WALLPAPER_THEMES = {
 } as const;
 
 // Shared grid so header and rows align like the web table
-const WALLPAPER_COLS = "grid-cols-[14px_56px_42px_1fr_24px_40px]";
+const WALLPAPER_COLS = "grid-cols-[14px_64px_48px_1fr_26px_46px]";
 
 function WallpaperTable({
   theme,
@@ -453,6 +453,8 @@ function WallpaperTable({
   targetRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const t = WALLPAPER_THEMES[theme];
+  // Many rows: tighten spacing so everything still fits on the lockscreen
+  const compact = rows.length > 9;
   const prodi =
     rows.find((r) => r.course?.study_program || r.detected_study_program)?.course?.study_program ||
     rows.find((r) => r.detected_study_program)?.detected_study_program ||
@@ -471,7 +473,7 @@ function WallpaperTable({
         position: "relative",
         fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
-      className="px-3 pt-44 pb-6 flex flex-col justify-between select-none"
+      className="px-3 pt-36 pb-6 flex flex-col justify-between select-none"
     >
       <div>
         {/* Header */}
@@ -491,7 +493,7 @@ function WallpaperTable({
         <div className={cn("mt-3 rounded-xl overflow-hidden", t.panel)}>
           <div
             className={cn(
-              "grid gap-x-2 items-center px-2.5 py-2.5 text-[8.5px] font-semibold uppercase tracking-wider",
+              "grid gap-x-2 items-center px-2.5 py-3 text-[9.5px] font-semibold uppercase tracking-wider",
               WALLPAPER_COLS,
               t.head
             )}
@@ -514,42 +516,43 @@ function WallpaperTable({
               <div
                 key={s.id || idx}
                 className={cn(
-                  "grid gap-x-2 items-center px-2.5 py-2.5",
+                  "grid gap-x-2 items-center px-2.5",
+                  compact ? "py-2" : "py-3",
                   WALLPAPER_COLS,
                   idx > 0 && "border-t",
                   t.rowBorder,
                   s.conflict ? t.conflict : idx % 2 === 1 && t.zebra
                 )}
               >
-                <span className={cn("text-center text-[9px] font-mono", t.faint)}>{idx + 1}</span>
+                <span className={cn("text-center text-[10px] font-mono", t.faint)}>{idx + 1}</span>
 
                 <div className="leading-tight">
-                  <div className={cn("text-[10.5px] font-bold", t.strong)}>{s.day_name}</div>
-                  <div className={cn("text-[9px] font-medium mt-0.5", t.muted)}>{dateStr}</div>
+                  <div className={cn("text-[12px] font-bold", t.strong)}>{s.day_name}</div>
+                  <div className={cn("text-[10px] font-medium mt-0.5", t.muted)}>{dateStr}</div>
                 </div>
 
-                <div className={cn("text-[10px] font-medium tabular-nums leading-tight", t.strong)}>
+                <div className={cn("text-[11px] font-medium tabular-nums leading-tight", t.strong)}>
                   <div>{s.start_time}</div>
                   <div className={cn("mt-0.5", t.muted)}>{s.end_time ? `– ${s.end_time}` : ""}</div>
                 </div>
 
                 <div className="min-w-0">
                   <div
-                    className={cn("text-[10.5px] font-bold leading-tight", t.strong)}
+                    className={cn(compact ? "text-[11px]" : "text-[12px]", "font-bold leading-tight", t.strong)}
                     style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
                   >
                     {s.course?.name || s.detected_name}
                   </div>
-                  <div className={cn("text-[8.5px] font-mono mt-0.5 truncate", t.muted)}>{code}</div>
+                  <div className={cn("text-[10px] font-mono mt-1 truncate", t.muted)}>{code}</div>
                 </div>
 
                 <div className="flex justify-center">
-                  <span className={cn("px-1.5 py-0.5 rounded text-[10px] font-bold", t.cls)}>
+                  <span className={cn("px-1.5 py-0.5 rounded text-[11.5px] font-bold", t.cls)}>
                     {s.class_name || s.detected_class}
                   </span>
                 </div>
 
-                <span className={cn("text-[10.5px] font-mono font-bold whitespace-nowrap", t.strong)}>
+                <span className={cn("text-[12px] font-mono font-bold whitespace-nowrap", t.strong)}>
                   {s.room || "—"}
                 </span>
 

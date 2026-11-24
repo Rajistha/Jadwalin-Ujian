@@ -7,6 +7,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
+import { resolveCredits } from "@/lib/utils";
 
 import UploadDropzone from "@/components/UploadDropzone";
 import SearchButton from "@/components/SearchButton";
@@ -170,49 +171,112 @@ export default function HomePage() {
   const handleExportPdf = useCallback(() => {
     if (!result) return;
     const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+    const pageW = doc.internal.pageSize.getWidth();
+    const pageH = doc.internal.pageSize.getHeight();
+    const M = 14;
+
+    const rows = [...result.matched].sort(
+      (a, b) => a.exam_date.localeCompare(b.exam_date) || a.start_time.localeCompare(b.start_time)
+    );
+    const totalCredits = rows.reduce((acc, s) => acc + resolveCredits(s), 0);
+    const prodi =
+      rows.find((r) => r.course?.study_program || r.detected_study_program)?.course?.study_program ||
+      rows.find((r) => r.detected_study_program)?.detected_study_program ||
+      selectedProgram;
+
+    // Header band
+    doc.setFillColor(37, 99, 235);
+    doc.rect(0, 0, pageW, 3, "F");
 
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(15);
+    doc.setFontSize(8.5);
+    doc.setTextColor(37, 99, 235);
+    doc.text("FAKULTAS ILMU KOMPUTER · UNIVERSITAS BRAWIJAYA", M, 14);
+
+    doc.setFontSize(18);
     doc.setTextColor(15, 23, 42);
-    doc.text("Jadwal Ujian Akhir Semester (UAS)", 14, 18);
+    doc.text("Jadwal Ujian Akhir Semester", M, 22);
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
     doc.setTextColor(100, 116, 139);
-    const subTitle = result.period ? `${result.period.name} · Tahun Akademik ${result.period.academic_year}` : "FILKOM Universitas Brawijaya · Semester Ganjil 2026/2027";
-    doc.text(subTitle, 14, 25);
-    doc.text(`Waktu Cetak: ${format(new Date(), "d MMMM yyyy HH:mm", { locale: id })} WIB`, 14, 31);
+    const periodName = result.period ? `${result.period.name}` : "UAS Ganjil 2026/2027";
+    doc.text(`${periodName}  |  Prodi ${prodi}`, M, 28.5);
+
+    // Summary on the right
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text(`${rows.length} Mata Kuliah  ·  ${totalCredits} SKS`, pageW - M, 22, { align: "right" });
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Dicetak ${format(new Date(), "d MMMM yyyy, HH:mm", { locale: id })} WIB`, pageW - M, 28.5, { align: "right" });
 
     autoTable(doc, {
-      startY: 37,
-      head: [["No", "Kode MK", "Nama Mata Kuliah", "Kelas", "Hari", "Tanggal", "Jam Ujian", "Ruangan"]],
-      body: [...result.matched]
-        .sort((a, b) => a.exam_date.localeCompare(b.exam_date) || a.start_time.localeCompare(b.start_time))
-        .map((s, i) => [
+      startY: 35,
+      margin: { left: M, right: M, bottom: 16 },
+      head: [["No", "Hari, Tanggal", "Waktu", "Kode MK", "Mata Kuliah", "Kelas", "Ruang", "SKS"]],
+      body: rows.map((s, i) => [
         i + 1,
+        `${s.day_name}, ${format(new Date(s.exam_date), "d MMM yyyy", { locale: id })}`,
+        `${s.start_time}${s.end_time ? " - " + s.end_time : ""}`,
         s.course?.code || s.detected_code,
         s.course?.name || s.detected_name,
         s.class_name || s.detected_class,
-        s.day_name,
-        format(new Date(s.exam_date), "d MMM yyyy", { locale: id }),
-        `${s.start_time}${s.end_time ? " – " + s.end_time : ""}`,
-        s.room || "—",
+        s.room || "-",
+        resolveCredits(s),
       ]),
-      styles: { font: "helvetica", fontSize: 9, cellPadding: 3.5 },
-      headStyles: { fillColor: [15, 23, 42], textColor: 255, fontStyle: "bold" },
+      theme: "plain",
+      styles: {
+        font: "helvetica",
+        fontSize: 9.5,
+        cellPadding: { top: 3.6, bottom: 3.6, left: 3, right: 3 },
+        textColor: [30, 41, 59],
+        lineColor: [226, 232, 240],
+        lineWidth: { bottom: 0.2 },
+        valign: "middle",
+      },
+      headStyles: {
+        fillColor: [241, 245, 249],
+        textColor: [71, 85, 105],
+        fontStyle: "bold",
+        fontSize: 8.5,
+        lineColor: [203, 213, 225],
+        lineWidth: { bottom: 0.4 },
+      },
       alternateRowStyles: { fillColor: [248, 250, 252] },
+      columnStyles: {
+        0: { cellWidth: 12, halign: "center", textColor: [148, 163, 184] },
+        1: { cellWidth: 46, fontStyle: "bold" },
+        2: { cellWidth: 32 },
+        3: { cellWidth: 26, font: "courier", fontSize: 9, textColor: [100, 116, 139] },
+        4: { cellWidth: "auto", fontStyle: "bold" },
+        5: { cellWidth: 16, halign: "center", fontStyle: "bold" },
+        6: { cellWidth: 22, halign: "center", font: "courier", fontStyle: "bold" },
+        7: { cellWidth: 14, halign: "center" },
+      },
+      didParseCell: (data) => {
+        if (data.section === "body" && rows[data.row.index]?.conflict) {
+          data.cell.styles.fillColor = [254, 242, 242];
+        }
+      },
     });
 
     const pageCount = doc.getNumberOfPages();
     for (let p = 1; p <= pageCount; p++) {
       doc.setPage(p);
+      doc.setDrawColor(226, 232, 240);
+      doc.setLineWidth(0.2);
+      doc.line(M, pageH - 12, pageW - M, pageH - 12);
+      doc.setFont("helvetica", "normal");
       doc.setFontSize(8);
       doc.setTextColor(148, 163, 184);
-      doc.text("Cek kembali jadwal di pengumuman resmi fakultas atau SIAM UB.", 14, doc.internal.pageSize.height - 8);
-      doc.text(`Halaman ${p} dari ${pageCount}`, doc.internal.pageSize.width - 28, doc.internal.pageSize.height - 8);
+      doc.text("Cek kembali jadwal di pengumuman resmi fakultas atau SIAM UB.", M, pageH - 7);
+      doc.text(`Halaman ${p} dari ${pageCount}`, pageW - M, pageH - 7, { align: "right" });
     }
     doc.save(`Jadwal-UAS-FILKOM-${format(new Date(), "yyyyMMdd")}.pdf`);
-  }, [result]);
+  }, [result, selectedProgram]);
 
   const isLoading = state === "loading";
 

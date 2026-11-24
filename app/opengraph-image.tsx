@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "nodejs";
 
 export const alt = "JadwalinUjian - Upload KRS, jadwal ujian langsung ketemu.";
-export const size = { width: 1200, height: 630 };
+export const size = { width: 1400, height: 630 };
 export const contentType = "image/png";
 
 const ROWS = [
@@ -68,7 +68,7 @@ export default async function Image() {
               letterSpacing: 1.5,
             }}
           >
-            <div style={{ display: "flex", width: 120 }}>TANGGAL</div>
+            <div style={{ display: "flex", width: 140 }}>TANGGAL</div>
             <div style={{ display: "flex", width: 80 }}>JAM</div>
             <div style={{ display: "flex", flex: 1 }}>MATA KULIAH</div>
             <div style={{ display: "flex", width: 80, justifyContent: "flex-end" }}>RUANG</div>
@@ -85,7 +85,7 @@ export default async function Image() {
                 fontSize: 20,
               }}
             >
-              <div style={{ display: "flex", width: 120, fontWeight: 700 }}>
+              <div style={{ display: "flex", width: 140, fontWeight: 700 }}>
                 {r.d}, {r.n}
               </div>
               <div style={{ display: "flex", width: 80, color: "#475569" }}>{r.t}</div>
