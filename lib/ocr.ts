@@ -16,6 +16,22 @@ const toDigit = (c: string) => ({ O: "0", o: "0", I: "1", l: "1", S: "5", B: "8"
 
 const CODE_RE = /\b([A-Z0-9]{3})([0-9OoIlSB]{5})\b/;
 
+// Class names in the schedule: A..H, INT, and multi-char like N1A / N7W.
+const CLASS_TOKEN = "(?:INT|N\\d[A-Z0-9]|[A-Z])";
+
+// Returns "" when the class can't be read, so the matcher doesn't silently assume "A".
+function extractClass(after: string): string {
+  const upper = after.replace(/[|]/g, " ");
+  // 1. Class token right before a number (SKS / capacity), e.g. "B 40 4" or "N1A 3,00"
+  const beforeNumber = new RegExp(`(?:^|\\s)(${CLASS_TOKEN})\\s+\\d`).exec(upper)?.[1];
+  if (beforeNumber) return beforeNumber;
+  // 2. Lowercase single letter OCR slip right before a number, e.g. "b 35"
+  const lower = /(?:^|\s)([a-h])\s+\d/.exec(upper)?.[1];
+  if (lower) return lower.toUpperCase();
+  // 3. Any standalone class token
+  return new RegExp(`(?:^|\\s)(${CLASS_TOKEN})(?:\\s|$)`).exec(upper)?.[1] ?? "";
+}
+
 export function parseKrsText(text: string): { detected_study_program?: string; courses: DetectedCourse[] } {
   const courses: DetectedCourse[] = [];
   const seen = new Set<string>();
@@ -35,7 +51,7 @@ export function parseKrsText(text: string): { detected_study_program?: string; c
 
     const program = PROGRAMS.find((p) => after.toLowerCase().includes(p.toLowerCase()));
     // Class is a single letter right before the SKS number (e.g. "A 3.00")
-    const cls = /(?:^|\s)([A-Z])\s+\d+[.,]\d{2}\b/.exec(after)?.[1] ?? /\s([A-Z])(?:\s|$)/.exec(after)?.[1] ?? "A";
+    const cls = extractClass(after);
 
     // Drop leading row-number noise from the name
     const name = before.replace(/^\d+[.)]?\s+/, "").trim() || code;

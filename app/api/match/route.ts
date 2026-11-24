@@ -84,38 +84,20 @@ export async function POST(req: NextRequest) {
         continue;
       }
 
-      // 2. Exact match by code only (any class, prioritizing program)
-      const exactByCodeOnly = schedules.filter(
-        (s) => s.course?.code?.toLowerCase() === det.code?.toLowerCase()
-      );
-      if (exactByCodeOnly.length > 0) {
-        const chosenCode = exactByCodeOnly.find(
-          (s) => s.course?.study_program?.toLowerCase() === courseProg?.toLowerCase()
-        ) || exactByCodeOnly[0];
+      // No code-only fallback: if the class doesn't match, we don't guess another class.
 
-        matched.push({
-          ...chosenCode,
-          detected_code: det.code,
-          detected_name: det.name,
-          detected_class: det.class,
-          detected_study_program: courseProg,
-          match_method: "exact",
-          match_score: 0.9,
-          conflict: false,
-        });
-        continue;
-      }
-
-      // 3. Fuzzy match by name
+      // 2. Fuzzy match by name (same class only)
       const normalized = normalizeCourseName(det.name);
       const fuseResults = fuse.search(normalized);
       if (fuseResults.length > 0 && fuseResults[0].score !== undefined && fuseResults[0].score < 0.4) {
         const matchedCourse = fuseResults[0].item;
-        const schedForCourse = schedules.find(
-          (s) =>
-            s.course_id === matchedCourse.id &&
-            s.class_name?.toLowerCase() === det.class?.toLowerCase()
-        ) || schedules.find((s) => s.course_id === matchedCourse.id);
+        const schedForCourse = det.class
+          ? schedules.find(
+              (s) =>
+                s.course_id === matchedCourse.id &&
+                s.class_name?.toLowerCase() === det.class?.toLowerCase()
+            )
+          : undefined;
 
         if (schedForCourse) {
           matched.push({

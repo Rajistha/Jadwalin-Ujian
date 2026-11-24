@@ -411,7 +411,7 @@ export default function HomePage() {
                 <Info className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold">Belum ketemu: </span>
-                  {result.unmatched.length} mata kuliah di KRS tidak ada di jadwal UAS: <span className="font-semibold underline">{result.unmatched.map((u) => u.name || u.code).join(", ")}</span>. Cek ke bagian akademik.
+                  {result.unmatched.length} mata kuliah tidak cocok dengan jadwal UAS (kelas tidak terbaca atau tidak ada di jadwal): <span className="font-semibold underline">{result.unmatched.map((u) => `${u.name || u.code}${u.class ? ` (kelas ${u.class})` : " (kelas tidak terbaca)"}`).join(", ")}</span>. Coba upload ulang screenshot yang lebih jelas, atau cek ke bagian akademik.
                 </div>
               </div>
             )}
