@@ -57,6 +57,8 @@ export interface DetectedCourse {
 export interface KrsIssue {
   column: "NAMA MK" | "KODE MK" | "PROGRAM STUDI" | "KELAS" | "SKS" | "STATUS" | "BARIS";
   message: string;
+  // true = a whole column is unreadable: show only this warning, not the schedule.
+  blocking: boolean;
 }
 
 export interface MatchedSchedule extends ExamSchedule {

@@ -5,9 +5,6 @@ export const DEFAULT_PROGRAM = "Teknologi Informasi";
 
 // Column headers of the SIAM UB KRS table (used to recognise the header row).
 const HEADER_COLUMNS = ["NAMA MK", "KODE MK", "PROGRAM STUDI", "KELAS", "SKS", "STATUS"] as const;
-// Columns the schedule lookup actually needs. SKS and STATUS are optional: STATUS only skips
-// courses that are not approved yet, SKS only powers the "TOTAL SKS" sanity check.
-const REQUIRED_COLUMNS = ["NAMA MK", "KODE MK", "PROGRAM STUDI", "KELAS"] as const;
 
 const PROGRAMS = [
   "Pendidikan Teknologi Informasi",
@@ -147,8 +144,10 @@ export function parseKrsText(text: string): {
   return { detected_study_program: detected, courses, issues };
 }
 
-const list = (cs: DetectedCourse[]) => cs.map((c) => c.name).join(", ");
-
+// Which columns can't be read, judged from the DATA (not the header text, which OCR may garble):
+// a column counts as missing when no row has it. Missing columns are "blocking": the schedule is
+// not shown at all, only the warning, because every match would be a guess.
+// Non-blocking issues (lost rows, unapproved courses) are shown above the results.
 function collectIssues(s: {
   courses: DetectedCourse[];
   sksByCourse: (number | null)[];
@@ -161,59 +160,40 @@ function collectIssues(s: {
   const issues: KrsIssue[] = [];
   const { courses } = s;
 
-  // Header row read, but some columns are not in it: most likely cut off in the screenshot.
-  if (s.headerLine) {
-    for (const col of REQUIRED_COLUMNS) {
-      if (!s.headerLine.includes(col.replace(/\s+/g, ""))) {
-        issues.push({ column: col, message: `Kolom ${col} tidak terlihat di screenshot. Pastikan seluruh tabel KRS ikut ter-screenshot.` });
-      }
-    }
-  }
   if (courses.length === 0) {
     if (s.lostRows > 0) {
-      issues.push({ column: "BARIS", message: `${s.lostRows} baris tabel terdeteksi tapi isinya tidak bisa dibaca. Gunakan screenshot yang lebih jelas dan tidak diperkecil.` });
+      issues.push({ column: "BARIS", blocking: false, message: `${s.lostRows} baris tabel terdeteksi tapi isinya tidak bisa dibaca. Gunakan screenshot yang lebih jelas dan tidak diperkecil.` });
     }
     return issues;
   }
-  const reported = new Set(issues.map((i) => i.column));
-  const add = (column: KrsIssue["column"], message: string) => {
-    if (!reported.has(column)) issues.push({ column, message });
-  };
 
-  // KELAS: per-course gaps are handled by the "pilih kelas" panel; warn here only when the whole column is gone.
-  if (courses.every((c) => !c.class)) {
-    add("KELAS", "Kolom KELAS tidak terbaca sama sekali. Pastikan kolom KELAS ikut ter-screenshot dan tidak buram.");
-  }
-
-  // A code missing in a few rows is harmless (matching works by name + class + prodi), so only
-  // warn when the whole column is gone.
-  if (courses.every((c) => !c.code)) {
-    add("KODE MK", "Kolom KODE MK tidak terbaca. Mata kuliah dicocokkan lewat nama, cek ulang hasilnya.");
-  }
-
-  const noProg = courses.filter((c) => !c.study_program);
-  if (noProg.length === courses.length) {
-    add("PROGRAM STUDI", `Kolom PROGRAM STUDI tidak terbaca. Prodi dianggap ${DEFAULT_PROGRAM}; kalau prodimu berbeda, hasilnya bisa tidak cocok.`);
-  } else if (noProg.length > 0) {
-    add("PROGRAM STUDI", `Program studi tidak terbaca untuk: ${list(noProg)}. Dianggap sama dengan prodi mata kuliah lain.`);
-  }
+  const block = (column: KrsIssue["column"]) =>
+    issues.push({ column, blocking: true, message: `Kolom ${column} tidak terbaca.` });
+  if (courses.every((c) => !c.name || c.name === c.code)) block("NAMA MK");
+  if (courses.every((c) => !c.code)) block("KODE MK");
+  if (courses.every((c) => !c.study_program)) block("PROGRAM STUDI");
+  if (courses.every((c) => !c.class)) block("KELAS");
+  if (s.sksByCourse.every((x) => x === null)) block("SKS");
+  if (!s.hasStatus && s.notApproved === 0) block("STATUS");
+  if (issues.length > 0) return issues;
 
   if (s.totalSks !== null && s.sksByCourse.every((x) => x !== null)) {
     const sum = s.sksByCourse.reduce<number>((a, x) => a + (x ?? 0), 0);
     if (Math.abs(sum - s.totalSks) > 0.001) {
-      add(
-        "BARIS",
-        `Total SKS yang terbaca (${sum}) berbeda dengan TOTAL SKS di KRS (${s.totalSks}). Kemungkinan ada mata kuliah yang tidak terbaca; bandingkan hasil dengan KRS-mu.`
-      );
+      issues.push({
+        column: "BARIS",
+        blocking: false,
+        message: `Total SKS yang terbaca (${sum}) berbeda dengan TOTAL SKS di KRS (${s.totalSks}). Kemungkinan ada mata kuliah yang tidak terbaca; bandingkan hasil dengan KRS-mu.`,
+      });
     }
   }
-
   if (s.notApproved > 0) {
-    add("STATUS", `${s.notApproved} mata kuliah belum disetujui (Ditolak/Menunggu/Dibatalkan) dan tidak dicari jadwalnya.`);
+    issues.push({ column: "STATUS", blocking: false, message: `${s.notApproved} mata kuliah belum disetujui (Ditolak/Menunggu/Dibatalkan) dan tidak dicari jadwalnya.` });
   }
   if (s.lostRows > 0 && !issues.some((i) => i.column === "BARIS")) {
     issues.push({
       column: "BARIS",
+      blocking: false,
       message: `${s.lostRows} baris tabel tidak bisa dibaca. Kemungkinan nama mata kuliah terpotong ke baris berikutnya atau gambar buram.`,
     });
   }

@@ -97,6 +97,12 @@ export default function HomePage() {
       await goStep(2);
 
       setIssues(extractData.issues);
+      // A whole column is unreadable: show only that warning. Matching without it would be guessing.
+      if (extractData.issues.some((i) => i.blocking)) {
+        setErrorMsg("");
+        setState("error");
+        return;
+      }
       if (!extractData.courses || extractData.courses.length === 0) {
         setErrorMsg("Gambar tidak terbaca sebagai tabel KRS. Pastikan screenshot tabel mata kuliah terlihat jelas.");
         setState("error");
@@ -411,7 +417,31 @@ export default function HomePage() {
         </div>
 
         {/* Error Notice */}
-        {state === "error" && (
+        {state === "error" && issues.some((i) => i.blocking) && (
+          // Unreadable column(s): this is the ONLY thing shown, no schedule and no "belum ketemu" list.
+          <div role="alert" className="bg-orange-50 border border-orange-200 rounded-xl p-5 flex flex-col items-center gap-3 text-center fade-slide-up max-w-lg mx-auto w-full">
+            <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+              <ShieldAlert className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-bold text-orange-950 text-sm">Ada kolom KRS yang tidak terbaca</h3>
+              <ul className="mt-1.5 text-xs font-semibold text-orange-900 flex flex-col gap-0.5">
+                {issues.filter((i) => i.blocking).map((i) => (
+                  <li key={i.column}>{i.message}</li>
+                ))}
+              </ul>
+              <p className="text-xs text-orange-800 mt-2 leading-relaxed">
+                Pastikan seluruh kolom tabel KRS (Nama MK sampai Status) terlihat utuh di screenshot, lalu unggah ulang.
+              </p>
+            </div>
+            <button onClick={() => setState("image_selected")} className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-900 text-white font-medium text-xs rounded-lg hover:bg-slate-800 transition shadow-xs cursor-pointer">
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Coba Unggah Ulang</span>
+            </button>
+          </div>
+        )}
+
+        {state === "error" && !issues.some((i) => i.blocking) && (
           <div className="bg-white rounded-xl border border-red-200 p-6 flex flex-col items-center gap-3 text-center fade-slide-up max-w-lg mx-auto w-full shadow-xs">
             <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-red-600">
               <ShieldAlert className="w-5 h-5" />

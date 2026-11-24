@@ -11,6 +11,8 @@ Periode data saat ini: UAS Ganjil 2026/2027 (30 November - 11 Desember 2026).
 - Upload screenshot KRS lewat klik, drag and drop, atau paste (Ctrl+V).
 - Membaca kode mata kuliah, nama, dan kelas dari gambar (tema terang maupun gelap), lalu mencocokkannya dengan jadwal UAS sesuai prodi dan kelas.
 - Kelas yang tidak terbaca tidak pernah ditebak: pengguna memilih kelasnya sendiri dari daftar kelas yang ada di jadwal.
+- Jadwal hanya ditampilkan kalau semua kolom KRS (Nama MK sampai Status) terbaca. Kalau ada kolom yang tidak terbaca, yang tampil hanya peringatannya, tanpa tabel jadwal.
+- Tombol "Perbaiki kelas" di bawah tabel untuk mengoreksi huruf kelas yang salah terbaca.
 - Tabel jadwal yang bisa diurutkan berdasarkan tanggal, jam, atau nama mata kuliah.
 - Penanda jadwal bentrok.
 - Ringkasan: total mata kuliah dan SKS, ujian pertama, ujian terakhir, status jadwal.

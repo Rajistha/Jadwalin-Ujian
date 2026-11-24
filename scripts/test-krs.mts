@@ -149,25 +149,33 @@ TOTAL SKS 24`;
 console.log("\n# Peringatan kolom");
 {
   const light = CASES[1].ocr;
-  const cols = (t: string) => parseKrsText(t).issues.map((i) => i.column).sort().join(",");
+  // "!" = blocking (a whole column is unreadable: only the warning is shown, no schedule)
+  const cols = (t: string) => parseKrsText(t).issues.map((i) => (i.blocking ? "!" : "") + i.column).sort().join(",");
   const checks: [string, string, string][] = [
     ["KRS gelap normal", CASES[0].ocr, ""],
     ["KRS terang normal", light, ""],
     ["kolom KELAS terpotong", `NAMA MK KODE MK PROGRAM STUDI SKS STATUS
 Kriptografi CIT60045 Teknologi Informasi 3.00 Disetujui
-Information Retrieval CIT60048 Teknologi Informasi 2.00 Disetujui`, "KELAS"],
+Information Retrieval CIT60048 Teknologi Informasi 2.00 Disetujui`, "!KELAS"],
     ["satu baris hilang (TOTAL SKS beda)", light.replace(/^Kriptografi.*\n/m, ""), "BARIS"],
     ["baris tabel tidak terbaca", light.replace(/^Kriptografi.*$/m, "Kr!pt0 ### ~~ Disetujui"), "BARIS"],
     ["kolom PROGRAM STUDI tidak terbaca", `Kriptografi CIT60045 A 3.00 Disetujui
-Information Retrieval CIT60048 A 2.00 Disetujui`, "PROGRAM STUDI"],
+Information Retrieval CIT60048 A 2.00 Disetujui`, "!PROGRAM STUDI"],
     ["kode di satu baris rusak total (tetap cocok lewat nama, tanpa peringatan)", light.replace("CIT60047", "C?T6@047"), ""],
     ["seluruh kolom KODE MK hilang", `Kriptografi Teknologi Informasi A 3.00 Disetujui
-Information Retrieval Teknologi Informasi A 2.00 Disetujui`, "KODE MK"],
+Information Retrieval Teknologi Informasi A 2.00 Disetujui`, "!KODE MK"],
+    // exactly what a screenshot with the NAMA MK column cut off looks like
+    ["kolom NAMA MK terpotong", `CIT60045 Teknologi Informasi A 3.00 Disetujui
+CIT60047 Teknologi Informasi A 2.00 Disetujui
+CIT60048 Teknologi Informasi A 2.00 Disetujui`, "!NAMA MK"],
+    ["kolom STATUS terpotong", `Kriptografi CIT60045 Teknologi Informasi A 3.00
+Information Retrieval CIT60048 Teknologi Informasi A 2.00`, "!STATUS"],
+    ["kolom SKS terpotong", `Kriptografi CIT60045 Teknologi Informasi A Disetujui
+Information Retrieval CIT60048 Teknologi Informasi A Disetujui`, "!SKS"],
     ["matkul belum disetujui", light.replace(/(Kriptografi.*)Disetujui/, "$1Ditolak").replace("TOTAL SKS 24", "TOTAL SKS 21"), "STATUS"],
-    // STATUS and SKS are optional: a screenshot without them must not warn, and classes must still be read.
     ["tanpa kolom SKS & STATUS", `NAMA MK KODE MK PROGRAM STUDI KELAS
 Kriptografi CIT60045 Teknologi Informasi A
-Information Retrieval CIT60048 Teknologi Informasi C`, ""],
+Information Retrieval CIT60048 Teknologi Informasi C`, "!SKS,!STATUS"],
   ];
   for (const [label, text, want] of checks) {
     const got = cols(text);
