@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useCallback } from "react";
-import imageCompression from "browser-image-compression";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
@@ -15,8 +14,8 @@ import LoadingStepper from "@/components/LoadingStepper";
 import SummaryCards from "@/components/SummaryCards";
 import ScheduleTable from "@/components/ScheduleTable";
 import Logo, { LogoIcon } from "@/components/Logo";
-import type { SearchResult, AppState } from "@/lib/types";
-import { extractCoursesFromImage } from "@/lib/ocr";
+import type { SearchResult, AppState, DetectedCourse, KrsIssue } from "@/lib/types";
+import { extractCoursesFromImage, DEFAULT_PROGRAM } from "@/lib/ocr";
 import { GraduationCap, ShieldAlert, RotateCcw, BookOpen, Lightbulb, CheckCircle2, Info, CalendarX, ExternalLink, Database } from "lucide-react";
 
 export default function HomePage() {
@@ -25,33 +24,25 @@ export default function HomePage() {
   const [state, setState] = useState<AppState>("idle");
   const [result, setResult] = useState<SearchResult | null>(null);
   const [selectedProgram, setSelectedProgram] = useState<string>("Teknologi Informasi");
-  const [extractedCourses, setExtractedCourses] = useState<any[]>([]);
+  const [extractedCourses, setExtractedCourses] = useState<DetectedCourse[]>([]);
+  const [rematching, setRematching] = useState(false);
+  const [issues, setIssues] = useState<KrsIssue[]>([]);
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loadingStep, setLoadingStep] = useState(0);
   const exportRef = useRef<HTMLDivElement>(null);
 
   const handleFileSelect = useCallback(async (f: File) => {
-    try {
-      const compressed = await imageCompression(f, {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1280,
-        useWebWorker: true,
-      });
-      setFile(compressed);
-      setPreviewUrl((prev) => {
-        if (prev) URL.revokeObjectURL(prev);
-        return URL.createObjectURL(compressed);
-      });
-    } catch {
-      setFile(f);
-      setPreviewUrl((prev) => {
-        if (prev) URL.revokeObjectURL(prev);
-        return URL.createObjectURL(f);
-      });
-    }
+    // Keep the original file: downscaling/compressing before OCR blurs small text
+    // (class letters, codes) and causes misreads.
+    setFile(f);
+    setPreviewUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(f);
+    });
     setState("image_selected");
     setResult(null);
     setErrorMsg("");
+    setIssues([]);
   }, []);
 
   const handleClear = useCallback(() => {
@@ -63,12 +54,14 @@ export default function HomePage() {
     setState("idle");
     setResult(null);
     setErrorMsg("");
+    setIssues([]);
   }, []);
 
   const handleSearch = useCallback(async () => {
     if (!file) return;
     setState("loading");
     setErrorMsg("");
+    setIssues([]);
     setLoadingStep(0);
     // Each step stays on screen for at least STEP_MIN_MS so the progress reads as real work.
     const STEP_MIN_MS = 800;
@@ -99,13 +92,14 @@ export default function HomePage() {
       await goStep(1);
       await goStep(2);
 
+      setIssues(extractData.issues);
       if (!extractData.courses || extractData.courses.length === 0) {
         setErrorMsg("Gambar tidak terbaca sebagai tabel KRS. Pastikan screenshot tabel mata kuliah terlihat jelas.");
         setState("error");
         return;
       }
 
-      const detectedProg = extractData.detected_study_program || "Teknologi Informasi";
+      const detectedProg = extractData.detected_study_program || DEFAULT_PROGRAM;
       setSelectedProgram(detectedProg);
       setExtractedCourses(extractData.courses);
 
@@ -139,6 +133,34 @@ export default function HomePage() {
       clearTimeout(readTimer);
     }
   }, [file]);
+
+  // User picks the correct class for a course whose class OCR couldn't read.
+  // Selects are disabled while a request is in flight, so picks can't overwrite each other.
+  const handleChooseClass = useCallback(
+    async (target: DetectedCourse, cls: string) => {
+      if (!cls || target.index === undefined || rematching) return;
+      const updated = extractedCourses.map((c, i) => (i === target.index ? { ...c, class: cls } : c));
+      setRematching(true);
+      try {
+        const res = await fetch("/api/match", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ courses: updated, study_program: selectedProgram }),
+        });
+        if (!res.ok) throw new Error("MATCH_FAILED");
+        const data: SearchResult = await res.json();
+        setExtractedCourses(updated);
+        setResult(data);
+        setState(data.stats.unmatched > 0 ? "partial" : "success");
+      } catch (err) {
+        console.error(err);
+        alert("Gagal memperbarui kelas. Coba lagi.");
+      } finally {
+        setRematching(false);
+      }
+    },
+    [extractedCourses, selectedProgram, rematching]
+  );
 
   const handleExportPng = useCallback(async () => {
     if (!exportRef.current) return;
@@ -381,6 +403,13 @@ export default function HomePage() {
             <div>
               <h3 className="font-bold text-slate-900 text-sm">Gagal Membaca Gambar</h3>
               <p className="text-xs text-slate-500 mt-1 leading-relaxed">{errorMsg || "Screenshot tidak bisa dibaca. Coba lagi dengan gambar yang lebih jelas."}</p>
+              {issues.length > 0 && (
+                <ul className="mt-2 text-left text-xs text-red-700 list-disc pl-4 flex flex-col gap-1">
+                  {issues.map((i) => (
+                    <li key={i.column + i.message}>{i.message}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <button onClick={() => setState("image_selected")} className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-900 text-white font-medium text-xs rounded-lg hover:bg-slate-800 transition shadow-xs cursor-pointer">
               <RotateCcw className="w-3.5 h-3.5" />
@@ -405,13 +434,60 @@ export default function HomePage() {
         {/* Results Container */}
         {(state === "success" || state === "partial") && result && (
           <div className="flex flex-col gap-5 fade-slide-up">
+            {/* Columns / rows the OCR couldn't read */}
+            {issues.length > 0 && (
+              <div role="alert" className="bg-orange-50 border border-orange-200 text-orange-900 rounded-lg p-3.5 text-xs font-medium flex items-start gap-2.5">
+                <ShieldAlert className="w-4 h-4 text-orange-600 flex-shrink-0 mt-0.5" />
+                <div className="flex-1 min-w-0">
+                  <p className="font-bold">Ada bagian KRS yang tidak terbaca</p>
+                  <ul className="mt-1.5 list-disc pl-4 flex flex-col gap-1">
+                    {issues.map((i) => (
+                      <li key={i.column + i.message}>{i.message}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
             {/* Partial Warning */}
             {state === "partial" && result.unmatched.length > 0 && (
               <div className="bg-amber-50 border border-amber-200 text-amber-900 rounded-lg p-3.5 text-xs font-medium flex items-start gap-2.5">
                 <Info className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold">Belum ketemu: </span>
-                  {result.unmatched.length} mata kuliah tidak cocok dengan jadwal UAS (kelas tidak terbaca atau tidak ada di jadwal): <span className="font-semibold underline">{result.unmatched.map((u) => `${u.name || u.code}${u.class ? ` (kelas ${u.class})` : " (kelas tidak terbaca)"}`).join(", ")}</span>. Coba upload ulang screenshot yang lebih jelas, atau cek ke bagian akademik.
+                <div className="flex-1 min-w-0">
+                  <p>
+                    <span className="font-bold">Belum ketemu: </span>
+                    {result.unmatched.length} mata kuliah tidak cocok dengan jadwal UAS. Kelasnya tidak terbaca atau tidak ada di jadwal. Pilih kelas yang sesuai KRS-mu:
+                  </p>
+                  <ul className="mt-2 flex flex-col gap-1.5">
+                    {result.unmatched.map((u) => (
+                      <li key={u.index ?? `${u.code}-${u.name}-${u.class}`} className="flex flex-wrap items-center gap-2">
+                        <span className="font-semibold">{u.name || u.code}</span>
+                        <span className="text-amber-700">
+                          {u.class ? `(terbaca kelas ${u.class})` : "(kelas tidak terbaca)"}
+                        </span>
+                        {u.available_classes && u.available_classes.length > 0 ? (
+                          <select
+                            aria-label={`Pilih kelas untuk ${u.name || u.code}`}
+                            value=""
+                            disabled={rematching}
+                            onChange={(e) => handleChooseClass(u, e.target.value)}
+                            className="rounded-md border border-amber-300 bg-white px-2 py-1 text-xs font-semibold text-amber-900"
+                          >
+                            <option value="" disabled>
+                              Pilih kelas
+                            </option>
+                            {u.available_classes.map((c) => (
+                              <option key={c} value={c}>
+                                Kelas {c}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <span className="text-amber-700">tidak ada di jadwal UAS prodi ini, cek ke bagian akademik</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             )}

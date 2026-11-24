@@ -44,6 +44,17 @@ export interface DetectedCourse {
   class: string;
   study_program?: string;
   confidence: number;
+  // Filled by /api/match for unmatched courses: classes that exist in the schedule
+  // for this course in the student's prodi, so the user can pick the right one.
+  available_classes?: string[];
+  // Position of this course in the request, so the client can update the right entry.
+  index?: number;
+}
+
+// A problem noticed while reading the KRS screenshot, shown to the user as a warning.
+export interface KrsIssue {
+  column: "NAMA MK" | "KODE MK" | "PROGRAM STUDI" | "KELAS" | "SKS" | "STATUS" | "BARIS";
+  message: string;
 }
 
 export interface MatchedSchedule extends ExamSchedule {

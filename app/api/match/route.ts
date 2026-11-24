@@ -79,16 +79,25 @@ export async function POST(req: NextRequest) {
       return near.length === 1 ? near[0] : code; // only fix when unambiguous
     };
 
-    for (const raw of detected) {
+    for (const [idx, raw] of detected.entries()) {
       const det = { ...raw, code: fixCode(raw.code) ?? raw.code };
       const courseProg = det.study_program || activeProgram;
+      const normalized = normalizeCourseName(det.name);
+      const fuseResults = getFuse(courseProg).search(normalized);
+
+      // A code is only trusted if the KRS name agrees with that course's name. Otherwise a misread
+      // or a real-but-unknown code one digit away (CSD60704 vs CSD60703) would silently land on
+      // another course's exam.
+      const nameAgrees = (courseId: string) =>
+        fuseResults.some((r) => r.item.id === courseId && r.score !== undefined && r.score < 0.4);
 
       // 1. Exact match by code + class + study program (no cross-prodi fallback)
       const chosenExact = schedules.find(
         (s) =>
           s.course?.code?.toLowerCase() === det.code?.toLowerCase() &&
           s.class_name?.toLowerCase() === det.class?.toLowerCase() &&
-          sameProg(s.course?.study_program, courseProg)
+          sameProg(s.course?.study_program, courseProg) &&
+          nameAgrees(s.course_id)
       );
 
       if (chosenExact) {
@@ -108,8 +117,6 @@ export async function POST(req: NextRequest) {
       // No code-only fallback: if the class doesn't match, we don't guess another class.
 
       // 2. Fuzzy match by name (same prodi, same class only)
-      const normalized = normalizeCourseName(det.name);
-      const fuseResults = getFuse(courseProg).search(normalized);
       if (fuseResults.length > 0 && fuseResults[0].score !== undefined && fuseResults[0].score < 0.4) {
         const matchedCourse = fuseResults[0].item;
         const schedForCourse = det.class
@@ -135,8 +142,20 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      // No match found
-      unmatched.push(det);
+      // No match found: tell the user which classes exist for this course in their prodi
+      // (never pick one for them).
+      const byCode = schedules.filter(
+        (s) =>
+          !!det.code &&
+          s.course?.code?.toLowerCase() === det.code.toLowerCase() &&
+          sameProg(s.course?.study_program, courseProg) &&
+          nameAgrees(s.course_id)
+      );
+      const fuzzyCourse = fuseResults[0]?.score !== undefined && fuseResults[0].score < 0.4 ? fuseResults[0].item : undefined;
+      const candidates = byCode.length > 0 ? byCode : fuzzyCourse ? schedules.filter((s) => s.course_id === fuzzyCourse.id) : [];
+      const available_classes = [...new Set(candidates.map((s) => s.class_name))].sort();
+      // Show the corrected code only when it was confirmed by the name; otherwise keep what the KRS said.
+      unmatched.push({ ...det, code: byCode.length > 0 ? det.code : raw.code, available_classes, index: idx });
     }
 
     // Detect conflicts
