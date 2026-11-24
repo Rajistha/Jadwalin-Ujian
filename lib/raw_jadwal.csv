@@ -1,0 +1,712 @@
+Hari dan Tanggal,Waktu,Prodi,Mata Kuliah,Kelas,Jml Mhs,Ruang
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,A,33,G1.5
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,B,32,F2.6
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,C,20,F3.10A
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,D,37,G1.1
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,E,33,G1.6
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,F,32,G1.2
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,G,32,F3.13
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,H,20,F3.10B
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Administrasi Basis Data,INT,7,F4.12
+30 Nov 2026,07:30-09:30,S1 Teknologi Informasi,Administrasi Basis Data,A,13,F3.9B
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Budha,N5A,3,F3.7
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Islam,N1A,30,F2.9
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Islam,N1B,31,F4.14
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Islam,N1C,31,F4.9
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Islam,N1D,31,F3.16
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Islam,N1E,29,F3.11
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Islam,N1F,31,F3.15
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Islam,N1L,28,F3.12
+30 Nov 2026,07:30-09:30,S1 Teknologi Informasi,Agama Islam,N1G,33,F2.5
+30 Nov 2026,07:30-09:30,S1 Teknologi Informasi,Agama Islam,N1H,34,RV 1.1
+30 Nov 2026,07:30-09:30,S1 Teknologi Informasi,Agama Islam,N1I,34,RV 1.3
+30 Nov 2026,07:30-09:30,S1 Teknologi Informasi,Agama Islam,N1J,34,F2.2
+30 Nov 2026,07:30-09:30,S1 Teknologi Informasi,Agama Islam,N1K,34,F2.4
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Agama Katolik,N2A,9,F3.4
+30 Nov 2026,07:30-09:30,S1 Teknik Komputer,Komputasi Paralel,A,32,F3.14
+30 Nov 2026,07:30-09:30,S1 Teknik Komputer,Komputasi Paralel,B,32,F2.8
+30 Nov 2026,07:30-09:30,S1 Teknik Komputer,Komputasi Paralel,C,34,G1.4
+30 Nov 2026,07:30-09:30,S1 Teknik Komputer,Komputasi Paralel,D,22,F4.10
+30 Nov 2026,07:30-09:30,S1 Teknik Komputer,Komputasi Paralel,E,32,F3.17
+30 Nov 2026,07:30-09:30,S1 Sistem Informasi,Pengantar GeoInformasi,A,20,F3.9A
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Pengolahan Citra Digital dan Visi Komputer,A,32,F4.13
+30 Nov 2026,07:30-09:30,S1 Teknik Informatika,Pengolahan Citra Digital dan Visi Komputer,B,26,F3.3
+30 Nov 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Penilaian Hasil Belajar,A,21,F4.11
+30 Nov 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Penilaian Hasil Belajar,B,32,F3.18
+30 Nov 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Penilaian Hasil Belajar,C,33,G1.3
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengantar Sistem Informasi,C,36,F3.12
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Sistem Informasi Geografis,A,16,F3.10B
+30 Nov 2026,10:00-12:00,S1 Teknik Komputer,Cognitive Robotics,A,26,F3.18
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pancasila,N8A,38,F2.8
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pancasila,N8B,44,F3.1
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pancasila,N8C,40,RV 1.1
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pancasila,N8D,38,F2.9
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pancasila,N8E,39,RV 1.3
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengantar Sistem Informasi,A,41,F2.4
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengantar Sistem Informasi,B,41,F2.5
+30 Nov 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Capstone Project,A,34,F3.3
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengantar Sistem Informasi,D,42,F2.2
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengantar Sistem Informasi,E,41,F2.6
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengantar Sistem Informasi,F,43,F3.5
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengantar Sistem Informasi,INT,15,F3.9B
+30 Nov 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Sistem Operasi,A,36,F3.2
+30 Nov 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Sistem Operasi,B,32,G1.3
+30 Nov 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Sistem Operasi,C,32,G1.2
+30 Nov 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Sistem Operasi,D,37,G1.1
+30 Nov 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Sistem Operasi,E,32,G1.4
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Pengembangan Aplikasi Multiplatform,A,16,F3.10A
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pengembangan Aplikasi Web,A,32,F3.14
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pengembangan Aplikasi Web,B,34,G1.6
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pengembangan Aplikasi Web,C,36,G1.5
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pengembangan Aplikasi Web,D,32,F3.15
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pengembangan Aplikasi Web,E,29,F3.16
+30 Nov 2026,10:00-12:00,S1 Teknologi Informasi,Pengembangan Aplikasi Web,F,22,F3.17
+30 Nov 2026,10:00-12:00,S1 Sistem Informasi,Sistem Informasi Geografis,A,9,F3.9A
+30 Nov 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Capstone Project,B,36,F3.11
+30 Nov 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Basis Data,A,32,F4.2
+30 Nov 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Basis Data,B,33,RV 1.3
+30 Nov 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Basis Data,C,30,F4.12
+30 Nov 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Basis Data,D,29,F4.14
+30 Nov 2026,13:00-15:00,S1 Teknologi Informasi,Big Data dan Analitik,A,31,F2.5
+30 Nov 2026,13:00-15:00,S1 Teknik Informatika,Metode Numerik,A,34,G1.3
+30 Nov 2026,13:00-15:00,S1 Teknik Informatika,Metode Numerik,B,31,F4.11
+30 Nov 2026,13:00-15:00,S1 Teknik Informatika,Metode Numerik,C,33,RV 1.1
+30 Nov 2026,13:00-15:00,S1 Teknik Informatika,Metode Numerik,D,39,G1.4
+30 Nov 2026,13:00-15:00,S1 Teknik Informatika,Metode Numerik,E,40,G1.1
+30 Nov 2026,13:00-15:00,S1 Teknik Informatika,Metode Numerik,F,35,G1.6
+30 Nov 2026,13:00-15:00,S1 Teknik Informatika,Metode Numerik,G,39,G1.5
+30 Nov 2026,13:00-15:00,S1 Teknik Komputer,Modern Control System,A,33,F2.4
+30 Nov 2026,13:00-15:00,S1 Teknik Komputer,Modern Control System,B,25,F2.6
+30 Nov 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital Lanjut,A,32,F3.17
+30 Nov 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital Lanjut,B,29,F4.13
+30 Nov 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital Lanjut,C,32,F3.18
+30 Nov 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital Lanjut,D,32,F4.3
+30 Nov 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital Lanjut,E,31,F4.10
+30 Nov 2026,13:00-15:00,S1 Sistem Informasi,Sistem Informasi berbasis Kecerdasan Buatan,A,33,F2.2
+30 Nov 2026,13:00-15:00,S1 Sistem Informasi,Sistem Informasi berbasis Kecerdasan Buatan,B,32,F3.16
+30 Nov 2026,13:00-15:00,S1 Sistem Informasi,Sistem Informasi berbasis Kecerdasan Buatan,C,33,G1.2
+30 Nov 2026,13:00-15:00,S1 Sistem Informasi,Sistem Informasi berbasis Kecerdasan Buatan,D,20,F3.10A
+30 Nov 2026,13:00-15:00,S1 Sistem Informasi,Sistem Informasi berbasis Kecerdasan Buatan,E,32,F3.15
+30 Nov 2026,13:00-15:00,S1 Sistem Informasi,Sistem Informasi berbasis Kecerdasan Buatan,F,25,F4.9
+30 Nov 2026,13:00-15:00,S1 Sistem Informasi,Sistem Informasi berbasis Kecerdasan Buatan,G,15,F3.10B
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,B,33,F2.8
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,A,42,F2.5
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,C,36,F2.6
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,D,32,F3.18
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,E,33,F2.9
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,F,31,F4.10
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,G,33,F3.11
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Analisis dan Perancangan Sistem,H,10,F3.10B
+01 Dec 2026,07:30-09:30,S1 Teknik Komputer,Arsitektur dan Organisasi Komputer Lanjut,A,32,F4.3
+01 Dec 2026,07:30-09:30,S1 Teknik Komputer,Arsitektur dan Organisasi Komputer Lanjut,B,40,G1.1
+01 Dec 2026,07:30-09:30,S1 Teknik Komputer,Arsitektur dan Organisasi Komputer Lanjut,C,36,G1.4
+01 Dec 2026,07:30-09:30,S1 Teknik Komputer,Arsitektur dan Organisasi Komputer Lanjut,D,32,F3.14
+01 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Forensik Dijital,A,34,G1.3
+01 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Forensik Dijital,B,33,RV 1.1
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Pola Perancangan,A,26,F3.17
+01 Dec 2026,07:30-09:30,S1 Teknik Informatika,Pola Perancangan,B,35,G1.6
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,A,33,RV 1.3
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,B,33,F2.2
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,C,34,G1.2
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,D,32,F3.15
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,E,36,G1.5
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,F,32,F3.16
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,G,33,F2.4
+01 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Sistem Informasi,INT,8,F3.10A
+01 Dec 2026,10:00-12:00,S1 Teknik Komputer,Kewarganegaraan,N6M,41,F2.6
+01 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Teknologi Basis Data Non Relational,B,8,F3.10A
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan Jaringan dan Siber,B,24,F3.14
+01 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kewarganegaraan,N6A,42,F2.2
+01 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kewarganegaraan,N6B,41,F2.4
+01 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kewarganegaraan,N6C,41,F2.5
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6D,34,F3.3
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6E,34,F3.12
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6F,34,F2.8
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6G,34,F2.9
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6H,32,F3.15
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6I,34,F3.11
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6O,15,F3.10B
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6P,35,RV 1.3
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6Q,2,F3.9A
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Kewarganegaraan,N6R,1,F3.9B
+01 Dec 2026,10:00-12:00,S1 Teknik Komputer,Kewarganegaraan,N6J,40,RV 1.1
+01 Dec 2026,10:00-12:00,S1 Teknik Komputer,Kewarganegaraan,N6K,32,F3.16
+01 Dec 2026,10:00-12:00,S1 Teknik Komputer,Kewarganegaraan,N6L,25,F3.18
+01 Dec 2026,10:00-12:00,S1 Teknik Informatika,Keamanan Jaringan,A,35,G1.1
+01 Dec 2026,10:00-12:00,S1 Teknik Komputer,Kewarganegaraan,N6N,26,F3.17
+01 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Perkembangan Peserta Didik,A,32,G1.6
+01 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Perkembangan Peserta Didik,B,30,G1.2
+01 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Perkembangan Peserta Didik,C,31,G1.3
+01 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Perkembangan Peserta Didik,D,28,F3.13
+01 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Teknologi Basis Data Non Relational,A,33,G1.5
+01 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan Jaringan dan Siber,A,34,G1.4
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,A,32,G1.3
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,G,29,F4.14
+01 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Pemrograman Dasar,C,32,G1.6
+01 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Pemrograman Dasar,D,32,G1.5
+01 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Pemrograman Dasar,A,35,G1.1
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,B,28,F2.9
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,C,30,F3.17
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,D,29,RV 1.3
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,E,28,F2.5
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,F,30,F4.11
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,G,29,F4.9
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,H,32,G1.2
+01 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pemrograman Dasar,INT,15,F3.10A
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,A,29,F2.4
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,B,26,F3.8
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,C,29,F2.2
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,D,29,RV 1.1
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,E,28,F2.6
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,F,28,F2.8
+01 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pemrograman Dasar,G,29,F4.13
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,H,21,F4.2
+01 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pemrograman Dasar,I,28,F3.11
+01 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pemrograman Dasar,A,30,F3.16
+01 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pemrograman Dasar,B,30,F3.15
+01 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pemrograman Dasar,C,30,F4.10
+01 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pemrograman Dasar,D,31,F3.13
+01 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pemrograman Dasar,E,31,F3.14
+01 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pemrograman Dasar,F,30,F3.18
+01 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pemrograman Dasar,A,25,F4.1
+01 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pemrograman Dasar,B,27,F3.4
+01 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pemrograman Dasar,C,27,F3.3
+01 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pemrograman Dasar,D,27,F3.12
+01 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pemrograman Dasar,E,26,F3.7
+01 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pemrograman Dasar,F,30,F4.12
+01 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Pemrograman Dasar,B,32,G1.4
+02 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Teknologi Blockchain dan Platform Keuangan Dijital,B,37,F2.4
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Bahasa Inggris,B,42,G1.5
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Bahasa Inggris,C,41,G1.3
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Bahasa Inggris,A,37,F2.2
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Bahasa Inggris,B,37,F2.6
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Bahasa Inggris,C,37,F2.5
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Bahasa Inggris,D,37,RV 1.3
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Bahasa Inggris,E,33,F4.3
+02 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Bahasa Inggris,A,37,F2.8
+02 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Bahasa Inggris,B,40,G1.1
+02 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Bahasa Inggris,C,40,G1.2
+02 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Bahasa Inggris,D,35,F4.2
+02 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Bahasa Inggris,E,38,RV 1.1
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Manajemen Industri Teknologi Informasi,A,29,F4.4
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Manajemen Industri Teknologi Informasi,B,42,G1.6
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Manajemen Industri Teknologi Informasi,C,32,F3.14
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Manajemen Industri Teknologi Informasi,D,28,F3.17
+02 Dec 2026,07:30-09:30,S1 Teknik Komputer,Manajemen Industri Teknologi Informasi,E,32,F3.15
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pembelajaran Mikro,A,20,F3.10B
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pembelajaran Mikro,B,20,F3.10A
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pembelajaran Mikro,C,20,F3.9B
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pembelajaran Mikro,D,19,F4.10
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pembelajaran Mikro,E,10,F4.11
+02 Dec 2026,07:30-09:30,S1 Sistem Informasi,Perbaikan Proses Bisnis,A,36,F3.11
+02 Dec 2026,07:30-09:30,S1 Sistem Informasi,Perbaikan Proses Bisnis,B,32,F3.13
+02 Dec 2026,07:30-09:30,S1 Sistem Informasi,Perbaikan Proses Bisnis,C,36,F2.9
+02 Dec 2026,07:30-09:30,S1 Sistem Informasi,Perbaikan Proses Bisnis,D,27,F3.18
+02 Dec 2026,07:30-09:30,S1 Sistem Informasi,Perbaikan Proses Bisnis,INT,10,F4.12
+02 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Teknologi Blockchain dan Platform Keuangan Dijital,A,20,F3.9A
+02 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Bahasa Inggris,A,43,G1.4
+02 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kalkulus dan Aljabar Linear,C,42,F2.4
+02 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Nirkabel,B,44,G1.4
+02 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Nirkabel,C,41,G1.6
+02 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Nirkabel,D,35,G1.3
+02 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Nirkabel,E,42,G1.5
+02 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Nirkabel,F,31,F3.14
+02 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kalkulus dan Aljabar Linear,A,42,F2.2
+02 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kalkulus dan Aljabar Linear,B,41,F2.5
+02 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Nirkabel,A,29,F3.16
+02 Dec 2026,10:00-12:00,S1 Teknik Komputer,Komputasi Numerik,A,32,G1.2
+02 Dec 2026,10:00-12:00,S1 Teknik Komputer,Komputasi Numerik,B,37,G1.1
+02 Dec 2026,10:00-12:00,S1 Teknik Komputer,Komputasi Numerik,C,30,F3.15
+02 Dec 2026,10:00-12:00,S1 Teknik Komputer,Komputasi Numerik,D,32,F3.13
+02 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Kriptografi,A,29,F4.10
+02 Dec 2026,10:00-12:00,S1 Sistem Informasi,Probabilitas dan Statistika,A,31,F3.17
+02 Dec 2026,10:00-12:00,S1 Sistem Informasi,Probabilitas dan Statistika,B,33,RV 1.1
+02 Dec 2026,10:00-12:00,S1 Sistem Informasi,Probabilitas dan Statistika,C,30,F3.18
+02 Dec 2026,10:00-12:00,S1 Sistem Informasi,Probabilitas dan Statistika,D,33,RV 1.3
+02 Dec 2026,10:00-12:00,S1 Sistem Informasi,Probabilitas dan Statistika,E,14,F3.10A
+02 Dec 2026,10:00-12:00,S1 Sistem Informasi,Probabilitas dan Statistika,G,33,F2.6
+02 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengantar Keilmuan Komputer,B,42,G1.6
+02 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pengantar Keilmuan Komputer,A,38,F2.4
+02 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Pengantar Keilmuan Komputer,C,41,F2.2
+02 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengantar Keilmuan Komputer,A,37,F3.12
+02 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Pengantar Keilmuan Komputer,A,45,G1.4
+02 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengantar Keilmuan Komputer,C,42,G1.3
+02 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengantar Keilmuan Komputer,D,39,RV 1.3
+02 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengantar Keilmuan Komputer,E,39,RV 1.1
+02 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengantar Keilmuan Komputer,F,43,G1.5
+02 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengantar Keilmuan Komputer,INT,15,F3.10A
+02 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pengantar Keilmuan Komputer,A,37,F3.7
+02 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pengantar Keilmuan Komputer,B,36,F4.2
+02 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pengantar Keilmuan Komputer,C,34,F4.6
+02 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pengantar Keilmuan Komputer,D,34,F4.5
+02 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pengantar Keilmuan Komputer,E,35,F4.4
+02 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pengantar Keilmuan Komputer,F,37,F2.8
+02 Dec 2026,13:00-15:00,S1 Teknik Informatika,Pengantar Keilmuan Komputer,G,36,F4.3
+02 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pengantar Keilmuan Komputer,A,37,F3.4
+02 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pengantar Keilmuan Komputer,B,37,F3.3
+02 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pengantar Keilmuan Komputer,C,37,F3.11
+02 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pengantar Keilmuan Komputer,D,36,F3.8
+02 Dec 2026,13:00-15:00,S1 Teknik Komputer,Pengantar Keilmuan Komputer,E,37,F2.9
+02 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pengantar Keilmuan Komputer,E,38,F2.5
+02 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pengantar Keilmuan Komputer,B,38,F2.6
+02 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pengantar Keilmuan Komputer,C,40,G1.1
+02 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Pengantar Keilmuan Komputer,D,36,F4.1
+02 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Pengantar Keilmuan Komputer,B,41,G1.2
+03 Dec 2026,07:30-09:30,S1 Teknik Komputer,Computer Vision,A,41,G1.6
+03 Dec 2026,07:30-09:30,S1 Teknik Komputer,Computer Vision,B,32,F4.4
+03 Dec 2026,07:30-09:30,S1 Teknik Komputer,Computer Vision,C,32,F4.2
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Deep Learning,A,41,F2.5
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Kecerdasan Artifisial,A,42,G1.4
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Kecerdasan Artifisial,B,32,F3.14
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Kecerdasan Artifisial,C,36,G1.1
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Kecerdasan Artifisial,D,32,F3.13
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Kecerdasan Artifisial,E,42,G1.5
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Kecerdasan Artifisial,F,34,G1.3
+03 Dec 2026,07:30-09:30,S1 Teknik Informatika,Kecerdasan Artifisial,G,32,F3.16
+03 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Pemrograman SQL,A,34,G1.2
+03 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Pemrograman SQL,B,22,F4.12
+03 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Pemrograman SQL,C,33,RV 1.1
+03 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Pemrograman SQL,D,32,F3.18
+03 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Pemrograman SQL,E,33,RV 1.3
+03 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Pemrograman SQL,F,32,F4.10
+03 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pengembangan Aplikasi Peranti Bergerak,A,33,F2.2
+03 Dec 2026,07:30-09:30,S1 Sistem Informasi,Sistem Informasi Berkelanjutan,A,33,F2.4
+03 Dec 2026,07:30-09:30,S1 Sistem Informasi,Sistem Informasi Berkelanjutan,B,32,F4.11
+03 Dec 2026,07:30-09:30,S1 Sistem Informasi,Sistem Informasi Berkelanjutan,C,19,F3.10A
+03 Dec 2026,10:00-12:00,S1 Teknik Informatika,Komputer Grafis,E,37,RV 1.1
+03 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kewirausahaan,B,40,G1.1
+03 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kewirausahaan,C,42,G1.5
+03 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Kewirausahaan,A,33,F2.4
+03 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Kewirausahaan,B,32,F4.2
+03 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Kewirausahaan,C,21,F4.12
+03 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Kewirausahaan,D,32,F3.17
+03 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Kewirausahaan,E,32,F4.3
+03 Dec 2026,10:00-12:00,S1 Teknik Informatika,Komputer Grafis,A,42,G1.6
+03 Dec 2026,10:00-12:00,S1 Teknik Informatika,Komputer Grafis,B,32,F3.15
+03 Dec 2026,10:00-12:00,S1 Teknik Informatika,Komputer Grafis,C,32,F4.6
+03 Dec 2026,10:00-12:00,S1 Teknik Informatika,Komputer Grafis,D,38,G1.2
+03 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Kewirausahaan,A,44,G1.4
+03 Dec 2026,10:00-12:00,S1 Teknik Informatika,Komputer Grafis,F,39,G1.3
+03 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pemrosesan dan Infrastruktur Data,A,34,RV 1.3
+03 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pemrosesan dan Infrastruktur Data,B,20,F3.10A
+03 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pemrosesan dan Infrastruktur Data,C,32,F3.13
+03 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pemrosesan dan Infrastruktur Data,D,31,F4.10
+03 Dec 2026,10:00-12:00,S1 Sistem Informasi,Transformasi Pemerintah,A,33,F2.2
+03 Dec 2026,10:00-12:00,S1 Sistem Informasi,Transformasi Pemerintah,B,30,F4.11
+03 Dec 2026,10:00-12:00,S1 Sistem Informasi,Transformasi Pemerintah,INT,10,F3.10B
+03 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Manajemen Proyek Teknologi Informasi,A,30,F4.4
+03 Dec 2026,13:00-15:00,S1 Teknik Komputer,Statistika dan Teori Peluang,E,38,RV 1.3
+03 Dec 2026,13:00-15:00,S1 Teknik Komputer,Edge Intelligence and Computing,A,32,F3.17
+03 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Manajemen Proyek Teknologi Informasi,B,24,F4.6
+03 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Manajemen Proyek Teknologi Informasi,A,35,G1.1
+03 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Manajemen Proyek Teknologi Informasi,B,32,G1.6
+03 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengembangan Aplikasi Mobile,A,31,F3.13
+03 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengembangan Aplikasi Mobile,B,34,G1.4
+03 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengembangan Aplikasi Mobile,C,32,G1.3
+03 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengembangan Aplikasi Mobile,D,33,G1.5
+03 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengembangan Aplikasi Mobile,E,31,F3.14
+03 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengembangan Aplikasi Mobile,F,32,G1.2
+03 Dec 2026,13:00-15:00,S1 Sistem Informasi,Pengembangan Aplikasi Mobile,INT,7,F3.10A
+03 Dec 2026,13:00-15:00,S1 Teknik Informatika,Statistika dan Teori Peluang,A,33,F3.4
+03 Dec 2026,13:00-15:00,S1 Teknik Informatika,Statistika dan Teori Peluang,B,40,RV 1.1
+03 Dec 2026,13:00-15:00,S1 Teknik Informatika,Statistika dan Teori Peluang,C,37,F2.5
+03 Dec 2026,13:00-15:00,S1 Teknik Informatika,Statistika dan Teori Peluang,D,37,F2.6
+03 Dec 2026,13:00-15:00,S1 Teknik Informatika,Statistika dan Teori Peluang,E,35,F3.3
+03 Dec 2026,13:00-15:00,S1 Teknik Informatika,Statistika dan Teori Peluang,F,37,F2.8
+03 Dec 2026,13:00-15:00,S1 Teknik Informatika,Statistika dan Teori Peluang,G,36,F3.12
+03 Dec 2026,13:00-15:00,S1 Teknik Komputer,Statistika dan Teori Peluang,A,37,F2.2
+03 Dec 2026,13:00-15:00,S1 Teknik Komputer,Statistika dan Teori Peluang,B,37,F2.4
+03 Dec 2026,13:00-15:00,S1 Teknik Komputer,Statistika dan Teori Peluang,C,36,F2.9
+03 Dec 2026,13:00-15:00,S1 Teknik Komputer,Statistika dan Teori Peluang,D,36,F3.11
+03 Dec 2026,13:00-15:00,S1 Teknik Komputer,Edge Intelligence and Computing,B,32,F3.18
+04 Dec 2026,07:30-09:30,S1 Sistem Informasi,Dasar Manajemen Proyek,A,32,F4.4
+04 Dec 2026,07:30-09:30,S1 Teknik Informatika,Agama Hindu,N4A,26,RV 1.3
+04 Dec 2026,07:30-09:30,S1 Sistem Informasi,Dasar Manajemen Proyek,B,33,G1.2
+04 Dec 2026,07:30-09:30,S1 Sistem Informasi,Dasar Manajemen Proyek,C,32,F4.2
+04 Dec 2026,07:30-09:30,S1 Sistem Informasi,Dasar Manajemen Proyek,D,32,F3.15
+04 Dec 2026,07:30-09:30,S1 Sistem Informasi,Dasar Manajemen Proyek,E,33,G1.6
+04 Dec 2026,07:30-09:30,S1 Sistem Informasi,Dasar Manajemen Proyek,F,35,G1.1
+04 Dec 2026,07:30-09:30,S1 Sistem Informasi,Dasar Manajemen Proyek,G,18,F3.10A
+04 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Filsafat Pendidikan dan Sains,A,33,G1.3
+04 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Filsafat Pendidikan dan Sains,B,30,F4.13
+04 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Filsafat Pendidikan dan Sains,C,32,F3.17
+04 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Filsafat Pendidikan dan Sains,D,28,F4.14
+04 Dec 2026,07:30-09:30,S1 Teknik Komputer,Intelligent Technologies,A,33,RV 1.1
+04 Dec 2026,07:30-09:30,S1 Teknik Komputer,Intelligent Technologies,B,32,F3.18
+04 Dec 2026,07:30-09:30,S1 Teknik Informatika,Pemrograman Gim,A,34,G1.5
+04 Dec 2026,07:30-09:30,S1 Teknik Informatika,Pemrosesan Bahasa Alami,A,35,G1.4
+04 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Penambangan Data,A,24,F4.9
+04 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Penambangan Data,B,32,F3.16
+04 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Penambangan Data,C,31,F4.10
+04 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Penambangan Data,A,30,F4.11
+04 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Teknologi Smart City,B,30,F4.12
+04 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Algoritma dan Struktur Data,D,32,F3.13
+04 Dec 2026,09:30-11:30,S1 Teknik Komputer,Sound Processing on Embedded System,A,35,G1.2
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Algoritma dan Struktur Data,C,39,G1.1
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Algoritma dan Struktur Data,D,42,G1.5
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Algoritma dan Struktur Data,E,31,F4.2
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Algoritma dan Struktur Data,F,34,RV 1.3
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Algoritma dan Struktur Data,G,32,F4.3
+04 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Algoritma dan Struktur Data,A,33,F2.5
+04 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Algoritma dan Struktur Data,B,33,F2.6
+04 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Algoritma dan Struktur Data,C,33,F2.4
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Algoritma dan Struktur Data,A,44,G1.4
+04 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Algoritma dan Struktur Data,E,34,RV 1.1
+04 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Algoritma dan Struktur Data,F,21,F3.18
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Machine Learning Operations (MLOps),A,32,F3.15
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Machine Learning Operations (MLOps),B,18,F3.10A
+04 Dec 2026,09:30-11:30,S1 Sistem Informasi,Manajemen Risiko dan Kontrol Sistem Informasi,A,35,G1.3
+04 Dec 2026,09:30-11:30,S1 Sistem Informasi,Manajemen Risiko dan Kontrol Sistem Informasi,B,33,F2.8
+04 Dec 2026,09:30-11:30,S1 Sistem Informasi,Manajemen Risiko dan Kontrol Sistem Informasi,C,34,F2.2
+04 Dec 2026,09:30-11:30,S1 Sistem Informasi,Manajemen Risiko dan Kontrol Sistem Informasi,D,38,G1.6
+04 Dec 2026,09:30-11:30,S1 Sistem Informasi,Manajemen Risiko dan Kontrol Sistem Informasi,INT,10,F3.10B
+04 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Perancangan Pengalaman Pengguna,A,26,F3.17
+04 Dec 2026,09:30-11:30,S1 Teknik Informatika,Algoritma dan Struktur Data,B,33,F2.9
+04 Dec 2026,13:00-15:00,S1 Sistem Informasi,Manajemen Keuangan,A,37,F2.2
+04 Dec 2026,13:00-15:00,S1 Sistem Informasi,Manajemen Keuangan,B,40,RV 1.3
+04 Dec 2026,13:00-15:00,S1 Sistem Informasi,Manajemen Keuangan,C,26,F4.11
+04 Dec 2026,13:00-15:00,S1 Sistem Informasi,Manajemen Keuangan,D,32,F4.10
+04 Dec 2026,13:00-15:00,S1 Sistem Informasi,Manajemen Keuangan,E,22,F4.12
+04 Dec 2026,13:00-15:00,S1 Sistem Informasi,Manajemen Keuangan,F,19,F3.10A
+04 Dec 2026,13:00-15:00,S1 Sistem Informasi,Manajemen Keuangan,G,33,F2.4
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rekayasa Sistem Komputer,A,32,F4.2
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rekayasa Sistem Komputer,B,34,G1.2
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rekayasa Sistem Komputer,C,32,F4.3
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rekayasa Sistem Komputer,D,32,F3.15
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital,A,38,G1.1
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital,B,38,G1.4
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital,C,38,G1.5
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital,D,38,G1.6
+04 Dec 2026,13:00-15:00,S1 Teknik Komputer,Sistem Digital,E,37,G1.3
+04 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Teknologi Sistem Terintegrasi,A,33,RV 1.1
+04 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Teknologi Sistem Terintegrasi,B,32,F3.16
+04 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Teknologi Sistem Terintegrasi,C,32,F3.17
+04 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Teknologi Sistem Terintegrasi,D,27,F3.18
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Enterprise Architecture II,A,16,F3.10A
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Forensik Digital,A,33,F2.2
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Interaksi Manusia dan Komputer,B,42,G1.4
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Interaksi Manusia dan Komputer,C,33,RV 1.3
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Interaksi Manusia dan Komputer,D,29,F4.13
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Interaksi Manusia dan Komputer,E,34,RV 1.1
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Interaksi Manusia dan Komputer,F,37,G1.1
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Interaksi Manusia dan Komputer,G,41,G1.5
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Komunikasi Profesional,A,32,F4.2
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Komunikasi Profesional,B,31,F4.3
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Komunikasi Profesional,C,37,G1.6
+07 Dec 2026,07:30-09:30,S1 Teknik Informatika,Interaksi Manusia dan Komputer,A,31,F4.10
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Komunikasi Profesional,D,32,F3.16
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Komunikasi Profesional,E,36,G1.2
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Komunikasi Profesional,F,32,F3.13
+07 Dec 2026,07:30-09:30,S1 Sistem Informasi,Komunikasi Profesional,G,32,F3.14
+07 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Paradigma Berpikir Sistem dan Desain,A,30,F4.11
+07 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Paradigma Berpikir Sistem dan Desain,B,30,F4.12
+07 Dec 2026,07:30-09:30,S1 Teknik Komputer,Sistem Linier,A,42,F2.4
+07 Dec 2026,07:30-09:30,S1 Teknik Komputer,Sistem Linier,B,42,F2.5
+07 Dec 2026,07:30-09:30,S1 Teknik Komputer,Sistem Linier,C,32,F4.14
+07 Dec 2026,07:30-09:30,S1 Teknik Komputer,Sistem Linier,D,32,F4.9
+07 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Teknologi Berbasis Cloud,A,36,G1.3
+07 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Teknologi Berbasis Cloud,B,31,F3.18
+07 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer,F,32,F3.13
+07 Dec 2026,10:00-12:00,S1 Sistem Informasi,Pemrograman Web Lanjut,A,19,F3.10A
+07 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Jaringan Komputer,C,32,F4.2
+07 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Jaringan Komputer,D,28,F4.12
+07 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer,A,39,G1.1
+07 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer,B,42,G1.4
+07 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer,C,33,G1.3
+07 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer,D,37,G1.5
+07 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Jaringan Komputer,A,32,G1.2
+07 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Jaringan Komputer,B,30,F4.10
+07 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer,G,32,F3.16
+07 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Jaringan Komputer,A,33,G1.6
+07 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Jaringan Komputer,B,32,F3.14
+07 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Jaringan Komputer,C,17,F3.10B
+07 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Jaringan Komputer,D,30,F4.11
+07 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Jaringan Komputer,E,32,F3.18
+07 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Jaringan Komputer,F,23,F4.13
+07 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Jaringan Komputer,G,14,F3.9A
+07 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer,E,32,F4.3
+07 Dec 2026,13:00-15:00,S1 Teknik Komputer,Internet of Things,A,32,F4.10
+07 Dec 2026,13:00-15:00,S1 Teknik Komputer,Internet of Things,B,32,F4.2
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Rekayasa Perangkat Lunak,G,35,F2.2
+07 Dec 2026,13:00-15:00,S1 Teknik Komputer,Internet of Things,D,32,F3.15
+07 Dec 2026,13:00-15:00,S1 Teknik Komputer,Internet of Things,E,14,F3.10B
+07 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Internet of Things,A,32,F3.13
+07 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Internet of Things,B,34,F2.5
+07 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Internet of Things,C,16,F3.10A
+07 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Internet of Things,D,32,F3.14
+07 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Internet of Things,E,35,RV 1.1
+07 Dec 2026,13:00-15:00,S1 Sistem Informasi,Perkembangan dan Tren Teknologi Digital,A,35,G1.2
+07 Dec 2026,13:00-15:00,S1 Sistem Informasi,Perkembangan dan Tren Teknologi Digital,B,34,F2.4
+07 Dec 2026,13:00-15:00,S1 Sistem Informasi,Perkembangan dan Tren Teknologi Digital,C,35,RV 1.3
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Realitas Terkembang,A,28,F4.11
+07 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Realitas Terkembang,A,24,F4.12
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Rekayasa Perangkat Lunak,A,39,G1.1
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Rekayasa Perangkat Lunak,B,32,F3.16
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Rekayasa Perangkat Lunak,C,37,G1.6
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Rekayasa Perangkat Lunak,D,37,G1.5
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Rekayasa Perangkat Lunak,E,36,G1.3
+07 Dec 2026,13:00-15:00,S1 Teknik Informatika,Rekayasa Perangkat Lunak,F,37,G1.4
+07 Dec 2026,13:00-15:00,S1 Teknik Komputer,Internet of Things,C,32,F4.3
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Etika Profesi,B,35,RV 1.3
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Etika Profesi,A,37,RV 1.1
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Etika Profesi,C,32,F4.2
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Etika Profesi,D,32,F4.10
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Etika Profesi,E,32,F4.3
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Etika Profesi,F,13,F3.9A
+08 Dec 2026,07:30-09:30,S1 Teknik Komputer,Etika Profesi,A,32,F3.16
+08 Dec 2026,07:30-09:30,S1 Teknik Komputer,Etika Profesi,B,32,F3.18
+08 Dec 2026,07:30-09:30,S1 Teknik Komputer,Etika Profesi,C,32,F3.13
+08 Dec 2026,07:30-09:30,S1 Teknik Komputer,Etika Profesi,D,32,F3.14
+08 Dec 2026,07:30-09:30,S1 Teknik Komputer,Etika Profesi,E,20,F3.10A
+08 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Etika Profesi,A,33,F2.6
+08 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Etika Profesi,B,31,F4.12
+08 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Etika Profesi,C,34,F2.4
+08 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Etika Profesi,D,34,F2.5
+08 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Etika Profesi,E,37,G1.1
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Infrastruktur Teknologi Informasi,A,42,G1.5
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Infrastruktur Teknologi Informasi,B,41,G1.3
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Infrastruktur Teknologi Informasi,C,43,G1.4
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Infrastruktur Teknologi Informasi,D,41,G1.6
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Infrastruktur Teknologi Informasi,E,41,G1.2
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Infrastruktur Teknologi Informasi,F,41,F2.2
+08 Dec 2026,07:30-09:30,S1 Sistem Informasi,Infrastruktur Teknologi Informasi,INT,15,F3.10B
+08 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Perancangan Pembelajaran,A,29,F4.13
+08 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Perancangan Pembelajaran,B,27,F4.14
+08 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Perancangan Pembelajaran,C,31,F4.11
+08 Dec 2026,10:00-12:00,S1 Sistem Informasi,Desain Basis Data,C,39,F2.5
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Agama Protestan,N3B,19,F3.9A
+08 Dec 2026,10:00-12:00,S1 Teknik Informatika,Arsitektur Berbasis Layanan,A,37,G1.1
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Dasar Pengembangan Sistem informasi,A,33,G1.4
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Dasar Pengembangan Sistem informasi,B,32,G1.2
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Dasar Pengembangan Sistem informasi,C,19,F3.10A
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Dasar Pengembangan Sistem informasi,D,33,G1.5
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Dasar Pengembangan Sistem informasi,E,31,F4.2
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Dasar Pengembangan Sistem informasi,F,32,F4.3
+08 Dec 2026,10:00-12:00,S1 Sistem Informasi,Desain Basis Data,A,42,F2.2
+08 Dec 2026,10:00-12:00,S1 Sistem Informasi,Desain Basis Data,B,39,F2.4
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Agama Protestan,N3A,21,F4.10
+08 Dec 2026,10:00-12:00,S1 Sistem Informasi,Desain Basis Data,D,38,F2.6
+08 Dec 2026,10:00-12:00,S1 Sistem Informasi,Desain Basis Data,E,40,RV 1.1
+08 Dec 2026,10:00-12:00,S1 Sistem Informasi,Desain Basis Data,F,40,RV 1.3
+08 Dec 2026,10:00-12:00,S1 Sistem Informasi,Desain Basis Data,INT,16,F3.9B
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Information Retrieval,A,33,G1.6
+08 Dec 2026,10:00-12:00,S1 Teknik Informatika,Jaringan Komputer Lanjut,A,17,F3.10B
+08 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Keamanan Informasi,A,32,F3.14
+08 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Keamanan Informasi,B,25,F3.17
+08 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Keamanan Informasi,C,32,F3.15
+08 Dec 2026,10:00-12:00,S1 Teknik Komputer,Pengantar Keamanan Informasi,D,33,G1.3
+08 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Pengembangan Aplikasi Web Lanjut,A,21,F3.18
+08 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,C,32,F4.10
+08 Dec 2026,13:00-15:00,S1 Teknik Komputer,Metodologi Penelitian dan Penulisan Ilmiah,D,31,F4.11
+08 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,A,32,F3.13
+08 Dec 2026,13:00-15:00,S1 Sistem Informasi,Metodologi Penelitian dan Penulisan Ilmiah,A,37,F2.2
+08 Dec 2026,13:00-15:00,S1 Sistem Informasi,Metodologi Penelitian dan Penulisan Ilmiah,B,31,F4.12
+08 Dec 2026,13:00-15:00,S1 Sistem Informasi,Metodologi Penelitian dan Penulisan Ilmiah,C,32,F3.18
+08 Dec 2026,13:00-15:00,S1 Sistem Informasi,Metodologi Penelitian dan Penulisan Ilmiah,D,33,F2.9
+08 Dec 2026,13:00-15:00,S1 Sistem Informasi,Metodologi Penelitian dan Penulisan Ilmiah,E,32,F3.16
+08 Dec 2026,13:00-15:00,S1 Sistem Informasi,Metodologi Penelitian dan Penulisan Ilmiah,F,32,F3.15
+08 Dec 2026,13:00-15:00,S1 Sistem Informasi,Metodologi Penelitian dan Penulisan Ilmiah,INT,8,F3.10B
+08 Dec 2026,13:00-15:00,S1 Teknik Informatika,Metodologi Penelitian dan Penulisan Ilmiah,A,40,RV 1.1
+08 Dec 2026,13:00-15:00,S1 Teknik Informatika,Metodologi Penelitian dan Penulisan Ilmiah,B,43,F3.1
+08 Dec 2026,13:00-15:00,S1 Teknik Informatika,Metodologi Penelitian dan Penulisan Ilmiah,C,33,F3.11
+08 Dec 2026,13:00-15:00,S1 Teknik Informatika,Metodologi Penelitian dan Penulisan Ilmiah,D,39,RV 1.3
+08 Dec 2026,13:00-15:00,S1 Teknik Informatika,Metodologi Penelitian dan Penulisan Ilmiah,E,33,F2.6
+08 Dec 2026,13:00-15:00,S1 Teknik Informatika,Metodologi Penelitian dan Penulisan Ilmiah,F,32,F3.14
+08 Dec 2026,13:00-15:00,S1 Teknik Komputer,Metodologi Penelitian dan Penulisan Ilmiah,A,31,F4.14
+08 Dec 2026,13:00-15:00,S1 Teknik Komputer,Metodologi Penelitian dan Penulisan Ilmiah,B,30,F3.12
+08 Dec 2026,13:00-15:00,S1 Teknik Komputer,Metodologi Penelitian dan Penulisan Ilmiah,C,32,F3.17
+08 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,E,34,F2.5
+08 Dec 2026,13:00-15:00,S1 Teknik Komputer,Metodologi Penelitian dan Penulisan Ilmiah,E,28,F3.3
+08 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,A,19,F3.10A
+08 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,B,33,F2.8
+08 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,C,35,F2.4
+08 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,D,30,F4.9
+08 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Metodologi Penelitian dan Penulisan Ilmiah,B,31,F4.13
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Arsitektur dan Organisasi Komputer,B,38,G1.6
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Arsitektur dan Organisasi Komputer,A,35,F3.3
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Arsitektur dan Organisasi Komputer,C,35,F3.12
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Arsitektur dan Organisasi Komputer,D,36,F2.9
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Arsitektur dan Organisasi Komputer,E,34,F3.4
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Arsitektur dan Organisasi Komputer,F,37,RV 1.1
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Arsitektur dan Organisasi Komputer,G,35,F3.11
+09 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Arsitektur dan Organisasi Komputer,A,39,G1.5
+09 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Arsitektur dan Organisasi Komputer,B,37,RV 1.3
+09 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Arsitektur dan Organisasi Komputer,C,40,G1.1
+09 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Arsitektur dan Organisasi Komputer,D,37,F2.2
+09 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Arsitektur dan Organisasi Komputer,E,38,G1.2
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Jaringan Saraf Tiruan,A,42,G1.4
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Jaringan Saraf Tiruan,B,36,F2.6
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Jaringan Saraf Tiruan,C,32,F3.13
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Jaringan Saraf Tiruan,D,37,F2.4
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Jaringan Saraf Tiruan,E,36,F2.5
+09 Dec 2026,07:30-09:30,S1 Teknik Informatika,Jaringan Saraf Tiruan,F,33,F3.7
+09 Dec 2026,07:30-09:30,S1 Sistem Informasi,Pengujian dan Evaluasi Sistem Informasi,A,38,G1.3
+09 Dec 2026,07:30-09:30,S1 Sistem Informasi,Pengujian dan Evaluasi Sistem Informasi,B,33,F3.8
+09 Dec 2026,07:30-09:30,S1 Sistem Informasi,Pengujian dan Evaluasi Sistem Informasi,C,36,F2.8
+09 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Komunikasi dan Teknologi Pendidikan,C,33,F2.2
+09 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Data Warehouse,A,31,F4.2
+09 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Data Warehouse,B,9,F3.9A
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan dan Privasi Data,A,44,G1.4
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan dan Privasi Data,B,38,G1.2
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan dan Privasi Data,C,39,G1.6
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan dan Privasi Data,D,39,G1.3
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan dan Privasi Data,E,42,G1.5
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan dan Privasi Data,F,40,G1.1
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Keamanan dan Privasi Data,INT,15,F3.10A
+09 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Keamanan Data dan Privasi,A,9,F3.9B
+09 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Komunikasi dan Teknologi Pendidikan,A,32,F3.16
+09 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Komunikasi dan Teknologi Pendidikan,B,30,F4.11
+09 Dec 2026,10:00-12:00,S1 Teknik Informatika,Administrasi Sistem Server,A,38,F2.4
+09 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Komunikasi dan Teknologi Pendidikan,D,31,F4.3
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Manajemen Produk,A,32,F3.14
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Manajemen Produk,B,28,F4.12
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Manajemen Produk,C,30,F4.10
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Manajemen Produk,D,33,RV 1.3
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Manajemen Produk,E,33,RV 1.1
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Manajemen Produk,F,32,F3.15
+09 Dec 2026,10:00-12:00,S1 Sistem Informasi,Manajemen Produk,INT,8,F4.13
+09 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Pendidikan Orang Dewasa dan Berkelanjutan,A,14,F3.10B
+09 Dec 2026,10:00-12:00,S1 Teknik Informatika,Penerapan Kecerdasan Artifisial,A,32,F3.13
+09 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Bahasa Indonesia,N7A,41,F2.4
+09 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Bahasa Indonesia,N7B,41,G1.3
+09 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Bahasa Indonesia,N7C,41,G1.2
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N71,6,F3.9A
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7J,39,F2.6
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7O,41,G1.6
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7P,41,F2.2
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7Q,14,F3.10A
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7R,36,F3.3
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7S,40,RV 1.3
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7T,40,RV 1.1
+09 Dec 2026,13:00-15:00,S1 Sistem Informasi,Bahasa Indonesia,N7W,10,F3.10B
+09 Dec 2026,13:00-15:00,S1 Teknik Komputer,Bahasa Indonesia,N7N,34,F3.7
+09 Dec 2026,13:00-15:00,S1 Teknik Informatika,Bahasa Indonesia,N7E,42,G1.4
+09 Dec 2026,13:00-15:00,S1 Teknik Informatika,Bahasa Indonesia,N7F,42,G1.5
+09 Dec 2026,13:00-15:00,S1 Teknik Informatika,Bahasa Indonesia,N7G,34,F3.8
+09 Dec 2026,13:00-15:00,S1 Teknik Informatika,Bahasa Indonesia,N7H,40,F2.5
+09 Dec 2026,13:00-15:00,S1 Teknik Informatika,Bahasa Indonesia,N7U,40,G1.1
+09 Dec 2026,13:00-15:00,S1 Teknik Informatika,Bahasa Indonesia,N7V,39,F2.8
+09 Dec 2026,13:00-15:00,S1 Teknik Komputer,Bahasa Indonesia,N7I,36,F3.12
+09 Dec 2026,13:00-15:00,S1 Teknik Komputer,Bahasa Indonesia,N7K,36,F3.4
+09 Dec 2026,13:00-15:00,S1 Teknik Komputer,Bahasa Indonesia,N7L,38,F2.9
+09 Dec 2026,13:00-15:00,S1 Teknik Komputer,Bahasa Indonesia,N7M,38,F3.11
+09 Dec 2026,13:00-15:00,S1 Teknik Informatika,Bahasa Indonesia,N7D,28,F3.13
+10 Dec 2026,07:30-09:30,S1 Teknik Komputer,Biomedical Sensor and Instrumentation,A,26,F4.3
+10 Dec 2026,07:30-09:30,S1 Teknik Komputer,Biomedical Sensor and Instrumentation,B,32,G1.3
+10 Dec 2026,07:30-09:30,S1 Teknik Informatika,DevSecOps,A,32,G1.2
+10 Dec 2026,07:30-09:30,S1 Teknik Informatika,DevSecOps,B,32,F4.4
+10 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Jaminan Kualitas Perangkat Lunak,A,33,G1.1
+10 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Jaringan Terapan,A,20,F3.10A
+10 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Jaringan Terapan,A,22,F4.10
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Manajemen Bisnis,A,37,F2.6
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Manajemen Bisnis,B,40,RV 1.1
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Manajemen Bisnis,C,40,RV 1.3
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Manajemen Bisnis,D,40,F2.4
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Manajemen Bisnis,E,41,F2.2
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Manajemen Bisnis,F,40,F2.5
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Manajemen Bisnis,INT,15,F3.10B
+10 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pemrograman Web,A,33,G1.4
+10 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pemrograman Web,B,30,F3.15
+10 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pemrograman Web,C,30,F3.16
+10 Dec 2026,07:30-09:30,S1 Pendidikan Teknologi Informasi,Pemrograman Web,D,29,F3.17
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Kebutuhan Sistem Informasi,A,32,F3.14
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Kebutuhan Sistem Informasi,B,33,G1.5
+10 Dec 2026,07:30-09:30,S1 Sistem Informasi,Rekayasa Kebutuhan Sistem Informasi,C,33,G1.6
+10 Dec 2026,10:00-12:00,S1 Teknik Informatika,Statistika Inferensi,A,41,F2.6
+10 Dec 2026,10:00-12:00,S1 Sistem Informasi,Strategi Transformasi Digital,C,34,RV 1.3
+10 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Data Sains,C,37,G1.1
+10 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Data Sains,D,31,F3.14
+10 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Data Sains,A,12,F3.10B
+10 Dec 2026,10:00-12:00,S1 Teknik Komputer,Desain dan Analisis Algoritma,A,30,F3.15
+10 Dec 2026,10:00-12:00,S1 Teknik Komputer,Desain dan Analisis Algoritma,B,45,G1.4
+10 Dec 2026,10:00-12:00,S1 Teknik Komputer,Desain dan Analisis Algoritma,C,35,G1.6
+10 Dec 2026,10:00-12:00,S1 Teknik Komputer,Desain dan Analisis Algoritma,D,35,G1.3
+10 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Paradigma Berpikir Komputasi,A,26,F3.16
+10 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Paradigma Berpikir Komputasi,B,16,F3.10A
+10 Dec 2026,10:00-12:00,S1 Pendidikan Teknologi Informasi,Pengembangan Program Pelatihan Teknologi Informasi,A,36,G1.5
+10 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Data Sains,B,33,F2.2
+10 Dec 2026,10:00-12:00,S1 Teknik Informatika,Statistika Inferensi,B,32,F3.17
+10 Dec 2026,10:00-12:00,S1 Teknik Informatika,Statistika Inferensi,C,32,F3.18
+10 Dec 2026,10:00-12:00,S1 Teknik Informatika,Statistika Inferensi,D,42,F2.4
+10 Dec 2026,10:00-12:00,S1 Teknik Informatika,Statistika Inferensi,E,42,F2.5
+10 Dec 2026,10:00-12:00,S1 Teknik Informatika,Statistika Inferensi,F,32,F4.10
+10 Dec 2026,10:00-12:00,S1 Sistem Informasi,Strategi Transformasi Digital,A,35,G1.2
+10 Dec 2026,10:00-12:00,S1 Sistem Informasi,Strategi Transformasi Digital,B,32,F3.13
+10 Dec 2026,10:00-12:00,S1 Teknologi Informasi,Data Sains,E,34,RV 1.1
+10 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Matematika Diskret,A,40,G1.1
+10 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Matematika Diskret,B,42,G1.6
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Teknologi Keamanan Siber,E,33,F4.2
+10 Dec 2026,13:00-15:00,S1 Sistem Informasi,Matematika Diskret,A,43,G1.5
+10 Dec 2026,13:00-15:00,S1 Sistem Informasi,Matematika Diskret,B,41,G1.3
+10 Dec 2026,13:00-15:00,S1 Sistem Informasi,Matematika Diskret,C,41,G1.2
+10 Dec 2026,13:00-15:00,S1 Sistem Informasi,Matematika Diskret,D,36,F3.3
+10 Dec 2026,13:00-15:00,S1 Sistem Informasi,Matematika Diskret,E,40,F2.2
+10 Dec 2026,13:00-15:00,S1 Sistem Informasi,Matematika Diskret,F,40,RV 1.1
+10 Dec 2026,13:00-15:00,S1 Sistem Informasi,Matematika Diskret,INT,15,F3.10A
+10 Dec 2026,13:00-15:00,S1 Teknik Komputer,Matematika Diskret,A,37,F3.11
+10 Dec 2026,13:00-15:00,S1 Teknik Komputer,Matematika Diskret,B,37,F3.12
+10 Dec 2026,13:00-15:00,S1 Teknik Komputer,Matematika Diskret,C,35,F3.7
+10 Dec 2026,13:00-15:00,S1 Teknik Komputer,Matematika Diskret,D,38,F2.6
+10 Dec 2026,13:00-15:00,S1 Teknik Komputer,Matematika Diskret,E,37,F2.9
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Matematika Diskret,A,36,F3.4
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Matematika Diskret,B,38,F2.4
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Matematika Diskret,C,40,RV 1.3
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Matematika Diskret,D,38,F2.8
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Matematika Diskret,E,38,F2.5
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Teknologi Keamanan Siber,A,33,F3.8
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Teknologi Keamanan Siber,B,33,F4.1
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Teknologi Keamanan Siber,C,31,F3.13
+10 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Teknologi Keamanan Siber,D,31,F3.14
+10 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Matematika Diskret,C,45,G1.4
+11 Dec 2026,07:30-09:30,S1 Teknik Komputer,Data-driven Control System,A,24,F3.15
+11 Dec 2026,07:30-09:30,S1 Teknik Komputer,Data-driven Control System,B,28,F3.14
+11 Dec 2026,07:30-09:30,S1 Teknik Komputer,Mikroprosesor dan Mikrokontroller,A,28,G1.2
+11 Dec 2026,07:30-09:30,S1 Teknik Komputer,Mikroprosesor dan Mikrokontroller,B,32,G1.4
+11 Dec 2026,07:30-09:30,S1 Teknik Komputer,Mikroprosesor dan Mikrokontroller,C,39,G1.1
+11 Dec 2026,07:30-09:30,S1 Teknik Komputer,Mikroprosesor dan Mikrokontroller,D,32,G1.5
+11 Dec 2026,07:30-09:30,S1 Teknik Komputer,Mikroprosesor dan Mikrokontroller,E,32,G1.6
+11 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Tata kelola dan Kebijakan Keamanan Siber,A,32,G1.3
+11 Dec 2026,07:30-09:30,S1 Teknologi Informasi,Tata kelola dan Kebijakan Keamanan Siber,B,22,F3.13
+11 Dec 2026,09:30-11:30,S1 Teknik Informatika,Pengembangan Aplikasi Perangkat Bergerak,A,40,G1.1
+11 Dec 2026,09:30-11:30,S1 Teknik Informatika,Pengembangan Aplikasi Perangkat Bergerak,B,42,G1.5
+11 Dec 2026,09:30-11:30,S1 Teknik Informatika,Pengembangan Aplikasi Perangkat Bergerak,C,31,F4.5
+11 Dec 2026,09:30-11:30,S1 Teknik Informatika,Pengembangan Aplikasi Perangkat Bergerak,D,37,RV 1.1
+11 Dec 2026,09:30-11:30,S1 Teknik Informatika,Pengembangan Aplikasi Perangkat Bergerak,E,39,G1.3
+11 Dec 2026,09:30-11:30,S1 Teknik Informatika,Pengembangan Aplikasi Perangkat Bergerak,F,42,G1.4
+11 Dec 2026,09:30-11:30,S1 Sistem Informasi,Tata Kelola Teknologi Informasi,A,32,F4.6
+11 Dec 2026,09:30-11:30,S1 Sistem Informasi,Tata Kelola Teknologi Informasi,B,40,G1.6
+11 Dec 2026,09:30-11:30,S1 Sistem Informasi,Tata Kelola Teknologi Informasi,C,38,G1.2
+11 Dec 2026,09:30-11:30,S1 Sistem Informasi,Tata Kelola Teknologi Informasi,D,30,F3.16
+11 Dec 2026,09:30-11:30,S1 Sistem Informasi,Tata Kelola Teknologi Informasi,E,34,F2.4
+11 Dec 2026,09:30-11:30,S1 Sistem Informasi,Tata Kelola Teknologi Informasi,F,37,RV 1.3
+11 Dec 2026,09:30-11:30,S1 Sistem Informasi,Tata Kelola Teknologi Informasi,G,28,F3.18
+11 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Tata Kelola Teknologi Informasi,A,32,F3.14
+11 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Tata Kelola Teknologi Informasi,B,25,F4.10
+11 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Tata Kelola Teknologi Informasi,C,34,F2.2
+11 Dec 2026,09:30-11:30,S1 Teknologi Informasi,Tata Kelola Teknologi Informasi,D,30,F3.17
+11 Dec 2026,13:00-15:00,S1 Teknik Informatika,Kalkulus,A,39,G1.1
+11 Dec 2026,13:00-15:00,S1 Teknik Informatika,Kalkulus,B,37,RV 1.1
+11 Dec 2026,13:00-15:00,S1 Teknik Informatika,Kalkulus,C,37,RV 1.3
+11 Dec 2026,13:00-15:00,S1 Teknik Informatika,Kalkulus,D,36,F4.2
+11 Dec 2026,13:00-15:00,S1 Teknik Informatika,Kalkulus,E,36,F4.3
+11 Dec 2026,13:00-15:00,S1 Teknik Informatika,Kalkulus,F,31,F4.4
+11 Dec 2026,13:00-15:00,S1 Teknik Informatika,Kalkulus,G,36,F2.8
+11 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Kalkulus,A,38,G1.6
+11 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Kalkulus,B,38,G1.3
+11 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Kalkulus,C,41,G1.4
+11 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Kalkulus,D,41,G1.5
+11 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Kalkulus,E,36,F2.9
+11 Dec 2026,13:00-15:00,S1 Teknologi Informasi,Kalkulus,F,10,F3.10A
+11 Dec 2026,13:00-15:00,S1 Pendidikan Teknologi Informasi,Manajemen Layanan Teknologi Informasi,A,32,F4.11
+11 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rangkaian Elektronika,A,37,F2.5
+11 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rangkaian Elektronika,B,36,F2.6
+11 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rangkaian Elektronika,C,38,G1.2
+11 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rangkaian Elektronika,D,37,F2.4
+11 Dec 2026,13:00-15:00,S1 Teknik Komputer,Rangkaian Elektronika,E,37,F2.2
+11 Dec 2026,13:00-15:00,S1 Sistem Informasi,Sistem Enterprise,A,32,F3.13
+11 Dec 2026,13:00-15:00,S1 Sistem Informasi,Sistem Enterprise,B,31,F4.9
+11 Dec 2026,13:00-15:00,S1 Sistem Informasi,Sistem Enterprise,C,32,F3.14
+11 Dec 2026,13:00-15:00,S1 Sistem Informasi,Sistem Enterprise,D,31,F3.18
+11 Dec 2026,13:00-15:00,S1 Sistem Informasi,Sistem Enterprise,E,32,F3.15
+11 Dec 2026,13:00-15:00,S1 Sistem Informasi,Sistem Enterprise,F,22,F4.10
+11 Dec 2026,13:00-15:00,S1 Sistem Informasi,Sistem Enterprise,INT,8,F3.10B

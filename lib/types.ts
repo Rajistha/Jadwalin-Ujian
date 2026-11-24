@@ -1,0 +1,81 @@
+// Shared TypeScript types for the application
+
+export interface Course {
+  id: string;
+  code: string;
+  name: string;
+  name_normalized: string;
+  credits?: number;
+  study_program?: string;
+}
+
+export interface ExamPeriod {
+  id: string;
+  name: string;
+  academic_year: string;
+  semester: "Ganjil" | "Genap";
+  start_date?: string;
+  end_date?: string;
+  is_active: boolean;
+}
+
+export interface ExamSchedule {
+  id: string;
+  period_id: string;
+  course_id: string;
+  batch_id?: string;
+  class_name: string;
+  exam_date: string; // ISO date string
+  day_name: string;
+  start_time: string; // HH:MM
+  end_time?: string;
+  room?: string;
+  lecturer?: string;
+  exam_type?: string;
+  notes?: string;
+  // Joined fields
+  course?: Course;
+  period?: ExamPeriod;
+}
+
+export interface DetectedCourse {
+  code: string;
+  name: string;
+  class: string;
+  study_program?: string;
+  confidence: number;
+}
+
+export interface MatchedSchedule extends ExamSchedule {
+  detected_code: string;
+  detected_name: string;
+  detected_class: string;
+  detected_study_program?: string;
+  match_method: "exact" | "fuzzy" | "manual" | "none";
+  match_score: number;
+  conflict?: boolean;
+}
+
+export interface SearchResult {
+  detected_study_program?: string;
+  matched: MatchedSchedule[];
+  unmatched: DetectedCourse[];
+  period?: ExamPeriod;
+  stats: {
+    detected: number;
+    matched: number;
+    unmatched: number;
+    duration_ms: number;
+  };
+}
+
+export type SortKey = "exam_date" | "day_name" | "start_time" | "course_name";
+export type SortDir = "asc" | "desc";
+export type AppState =
+  | "idle"
+  | "image_selected"
+  | "loading"
+  | "success"
+  | "partial"
+  | "error"
+  | "no_data";
