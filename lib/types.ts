@@ -65,6 +65,10 @@ export interface MatchedSchedule extends ExamSchedule {
   detected_class: string;
   detected_study_program?: string;
   detected_credits?: number | null;
+  // Position of this course in the request, and the classes that exist in the schedule for it,
+  // so the user can correct a misread class with one click.
+  index?: number;
+  available_classes?: string[];
   match_method: "exact" | "fuzzy" | "manual" | "none";
   match_score: number;
   conflict?: boolean;

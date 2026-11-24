@@ -13,6 +13,7 @@ import SearchButton from "@/components/SearchButton";
 import LoadingStepper from "@/components/LoadingStepper";
 import SummaryCards from "@/components/SummaryCards";
 import ScheduleTable from "@/components/ScheduleTable";
+import ClassEditor from "@/components/ClassEditor";
 import Logo, { LogoIcon } from "@/components/Logo";
 import type { SearchResult, AppState, DetectedCourse, KrsIssue } from "@/lib/types";
 import { extractCoursesFromImage, DEFAULT_PROGRAM } from "@/lib/ocr";
@@ -137,12 +138,13 @@ export default function HomePage() {
     }
   }, [file]);
 
-  // User picks the correct class for a course whose class OCR couldn't read.
-  // Selects are disabled while a request is in flight, so picks can't overwrite each other.
-  const handleChooseClass = useCallback(
-    async (target: DetectedCourse, cls: string) => {
-      if (!cls || target.index === undefined || rematching) return;
-      const updated = extractedCourses.map((c, i) => (i === target.index ? { ...c, class: cls } : c));
+  // User picks the correct class for a course: either one whose class OCR couldn't read, or one
+  // OCR read wrongly (e.g. C read as E). Controls are disabled while a request is in flight, so
+  // picks can't overwrite each other.
+  const handleApplyClasses = useCallback(
+    async (changes: Record<number, string>) => {
+      if (rematching || Object.keys(changes).length === 0) return;
+      const updated = extractedCourses.map((c, i) => (changes[i] ? { ...c, class: changes[i] } : c));
       setRematching(true);
       try {
         const res = await fetch("/api/match", {
@@ -164,6 +166,14 @@ export default function HomePage() {
       }
     },
     [extractedCourses, selectedProgram, rematching]
+  );
+
+  // Single pick from the "belum ketemu" panel
+  const handleChooseClass = useCallback(
+    (index: number | undefined, cls: string) => {
+      if (cls && index !== undefined) handleApplyClasses({ [index]: cls });
+    },
+    [handleApplyClasses]
   );
 
   const handleExportPng = useCallback(async () => {
@@ -502,7 +512,7 @@ export default function HomePage() {
                                   disabled={rematching}
                                   onClick={() => {
                                     setChoosing(`${key}:${c}`);
-                                    handleChooseClass(u, c);
+                                    handleChooseClass(u.index, c);
                                   }}
                                   className={cn(
                                     "min-w-[2.75rem] h-8 px-3 rounded-full border text-xs font-semibold transition-all inline-flex items-center justify-center gap-1",
@@ -552,6 +562,7 @@ export default function HomePage() {
               <>
                 <SummaryCards result={result} />
                 <ScheduleTable schedules={result.matched} onExportPng={handleExportPng} onExportPdf={handleExportPdf} exportRef={exportRef} />
+                <ClassEditor schedules={result.matched} busy={rematching} onApply={handleApplyClasses} />
               </>
             )}
           </div>

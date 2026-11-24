@@ -176,6 +176,35 @@ Information Retrieval CIT60048 Teknologi Informasi C`, ""],
   }
 }
 
+// "Perbaiki kelas": every matched row carries its index and the classes that exist for it, and a
+// misread class (C read as E) is corrected by re-sending that one course with the right class.
+console.log("\n# Perbaiki kelas (C terbaca E)");
+{
+  const post = async (cls: string) =>
+    (await (await fetch(`${BASE}/api/match`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        study_program: "Teknologi Informasi",
+        courses: [
+          { code: "CIT61024", name: "Teknologi Keamanan Siber", class: cls, confidence: 0.9 },
+          { code: "CIT61026", name: "Internet of Things", class: "D", confidence: 0.9 },
+        ],
+      }),
+    })).json());
+  const wrong = await post("E");
+  const w = wrong.matched.find((m: { index: number }) => m.index === 0);
+  if (w?.class_name === "E" && w.room === "F4.2" && w.available_classes?.join(",") === "A,B,C,D,E") console.log("  ok   salah baca E: tampil E/F4.2, pilihan kelas A,B,C,D,E tersedia");
+  else fail(`respons kelas E tidak sesuai: ${JSON.stringify(w && { c: w.class_name, r: w.room, a: w.available_classes })}`);
+  const fixed = await post("C");
+  const f = fixed.matched.find((m: { index: number }) => m.index === 0);
+  if (f?.class_name === "C" && f.room === "F3.13" && f.exam_date === "2026-12-10") console.log("  ok   setelah dikoreksi ke C: F3.13, 2026-12-10");
+  else fail(`respons kelas C tidak sesuai: ${JSON.stringify(f && { c: f.class_name, r: f.room, d: f.exam_date })}`);
+  const other = fixed.matched.find((m: { index: number }) => m.index === 1);
+  if (other?.class_name === "D") console.log("  ok   matkul lain tidak ikut berubah");
+  else fail("matkul lain ikut berubah");
+}
+
 // Unreadable class must never be guessed, and must offer the real classes to choose from.
 console.log("\n# Kelas tidak terbaca");
 {

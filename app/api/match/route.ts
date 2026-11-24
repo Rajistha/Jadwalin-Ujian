@@ -63,6 +63,10 @@ export async function POST(req: NextRequest) {
       return f;
     };
 
+    // Classes that exist in the schedule for a course (sorted, e.g. A,B,C,D,E).
+    const classesOf = (courseId: string) =>
+      [...new Set(schedules.filter((s) => s.course_id === courseId).map((s) => s.class_name))].sort();
+
     const matched: MatchedSchedule[] = [];
     const unmatched: DetectedCourse[] = [];
 
@@ -135,6 +139,8 @@ export async function POST(req: NextRequest) {
           detected_class: det.class,
           detected_study_program: courseProg,
           detected_credits: det.credits ?? null,
+          index: idx,
+          available_classes: classesOf(chosenExact.course_id),
           match_method: "exact",
           match_score: 1,
           conflict: false,
@@ -163,6 +169,8 @@ export async function POST(req: NextRequest) {
             detected_class: det.class,
             detected_study_program: courseProg,
             detected_credits: det.credits ?? null,
+            index: idx,
+            available_classes: classesOf(schedForCourse.course_id),
             match_method: "fuzzy",
             match_score: 1 - (fuseResults[0].score || 0),
             conflict: false,

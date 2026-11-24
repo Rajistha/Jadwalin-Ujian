@@ -361,7 +361,7 @@ export default function ScheduleTable({
         <div className="px-6 py-3.5 bg-slate-50/70 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
           <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
             <Info className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
-            <span>Cek kembali jadwal di pengumuman resmi SIAM UB atau fakultas.</span>
+            <span>Cek kembali jadwal di pengumuman resmi SIAM UB atau fakultas. Kelas ada yang salah? Gunakan tombol Perbaiki kelas di bawah tabel.</span>
           </div>
           <div className="text-[11px] text-slate-400 font-mono">
             FILKOM UB · 2026/2027
